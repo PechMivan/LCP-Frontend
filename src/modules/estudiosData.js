@@ -72,7 +72,7 @@ export const categorias = [
     especialidad: "HORMONAL",
     estudios: [
       { nombre: "ANDROSTENEDIONA", precio: "550.00"},
-      { nombre: "DEHIDROEPIANDROSTERONA TOTAL (DHEA-S)", precio: "400.00"},
+      { nombre: "DE HIDRO EPIANDROSTERONA TOTAL (DHEA-S)", precio: "400.00"},
     ],
   },
   {

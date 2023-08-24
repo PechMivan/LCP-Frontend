@@ -11,12 +11,12 @@ export default function AccordionEstudios({index, categoria}) {
             </button>
           </h2>
           <div id={`flush-collapseOne${index}`} className="accordion-collapse collapse" data-bs-parent={`#accordionFlushExample${index}`}>
-            <div className="accordion-body">
+            <div className="accordion-body p-0">
             <table className="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Estudio</th>
+                  <th className="px-0" scope="col">Estudio</th>
                   <th scope="col">Precio</th>
                 </tr>
               </thead>
@@ -25,7 +25,7 @@ export default function AccordionEstudios({index, categoria}) {
                   categoria.estudios.map( (estudio, key) => (
                     <tr key={key}>
                       <th>{key+1}</th>
-                      <td>{estudio.nombre}</td>
+                      <td className="px-0">{estudio.nombre}</td>
                       <td>${estudio.precio}</td>
                     </tr>
                   ))
