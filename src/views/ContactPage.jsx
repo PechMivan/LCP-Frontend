@@ -18,21 +18,21 @@ export default function ContactPage() {
   const handleButton = async (e) => {
     e.preventDefault();
     try {
-      await fetch( "https://formsubmit.co/ajax/leonrosant92@gmail.com",
-      //await fetch( "https://formsubmit.co/ajax/laboratorioclinicoponiente@gmail.com",
-        {
-          method: "POST",
-          headers: { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(
-            {
-              nombre,email,numero,asunto,mensaje
-            }
-          )
-        }
-      )
+      // await fetch( "https://formsubmit.co/ajax/leonrosant92@gmail.com",
+      // //await fetch( "https://formsubmit.co/ajax/laboratorioclinicoponiente@gmail.com",
+      //   {
+      //     method: "POST",
+      //     headers: { 
+      //       'Content-Type': 'application/json',
+      //       'Accept': 'application/json'
+      //     },
+      //     body: JSON.stringify(
+      //       {
+      //         nombre,email,numero,asunto,mensaje
+      //       }
+      //     )
+      //   }
+      // )
       borrarDatos();
       toast.success('El mensaje se ha enviado.')
     } catch (error) {
