@@ -2,10 +2,10 @@
 export default function AccordionEstudios({index, categoria}) {
   return (
     <>
-      <div className="accordion accordion-flush px-5 py-1 mb-3 col-12 col-md-6" id={`accordionFlushExample${index}`} >
+      <div className="accordion accordion-flush col-12 col-md-6" id={`accordionFlushExample${index}`} >
         <div className="accordion-item">
           <h2 className="accordion-header">
-            <button className="accordion-button collapsed p-1" type="button" data-bs-toggle={`collapse`} data-bs-target={`#flush-collapseOne${index}`} aria-expanded="false" aria-controls={`#flush-collapseOne${index}`} >
+            <button className="accordion-button collapsed" type="button" data-bs-toggle={`collapse`} data-bs-target={`#flush-collapseOne${index}`} aria-expanded="false" aria-controls={`#flush-collapseOne${index}`} >
               <img src={categoria.icono} alt={`Icono especialidad ${categoria.especialidad}`} style={{width: "50px", marginRight:"10px"}}/>
               {categoria.especialidad}
             </button>
