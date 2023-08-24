@@ -1,10 +1,10 @@
-import analisisClinico from './../assets/img/promociones/Analisis_clinicos.jpg';
-import descuento from './../assets/img/promociones/Descuento.png';
-import pcr from './../assets/img/promociones/PruebaPcr.jpg';
-import analisis from './../assets/img/promociones/Analisis.png';
-import domicilio from './../assets/img/destacados/Servicio_a_domicilio.jpg';
-import empresas from './../assets/img/destacados/Servicio_empresas.jpg';
-import checkUp from './../assets/img/destacados/Check_up_basico.jpg';
+import analisisClinico from '/assets/img/promociones/Analisis_clinicos.jpg';
+import descuento from '/assets/img/promociones/Descuento.png';
+import pcr from '/assets/img/promociones/PruebaPcr.jpg';
+import analisis from '/assets/img/promociones/Analisis.png';
+import domicilio from '/assets/img/destacados/Servicio_a_domicilio.jpg';
+import empresas from '/assets/img/destacados/Servicio_empresas.jpg';
+import checkUp from '/assets/img/destacados/Check_up_basico.jpg';
 import ButtonCita from '../components/ButtonCita';
 
 function HomePage() {

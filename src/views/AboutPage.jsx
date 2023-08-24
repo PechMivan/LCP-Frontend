@@ -1,13 +1,13 @@
-import Benji from '../assets/img/about/Benji.jpg';
-import Daniel from '../assets/img/about/Daniel.jpg';
-import Geo from '../assets/img/about/Geo.jpg';
-import Jose from '../assets/img/about/Jose.jpg';
-import Leo from '../assets/img/about/Leo.jpg';
-import Lu from '../assets/img/about/Lu.jpg';
-import Luis from '../assets/img/about/Luis.jpg';
-import Mario from '../assets/img/about/Mario.jpg';
-import mision from '../assets/img/about/mision.jpg';
-import vision from '../assets/img/about/vision.jpg';
+import Benji from '/assets/img/about/Benji.jpg';
+import Daniel from '/assets/img/about/Daniel.jpg';
+import Geo from '/assets/img/about/Geo.jpg';
+import Jose from '/assets/img/about/Jose.jpg';
+import Leo from '/assets/img/about/Leo.jpg';
+import Lu from '/assets/img/about/Lu.jpg';
+import Luis from '/assets/img/about/Luis.jpg';
+import Mario from '/assets/img/about/Mario.jpg';
+import mision from '/assets/img/about/mision.jpg';
+import vision from '/assets/img/about/vision.jpg';
 
 export default function AboutPage() {
   const equipo = [

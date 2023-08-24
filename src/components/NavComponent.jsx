@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Logo from './../assets/img/Logo.svg';
+import Logo from '/assets/img/Logo.svg';
 export default function NavComponent() {
   return (
     <nav className="bg-gradient navbar navbar-dark navbar-expand-md">

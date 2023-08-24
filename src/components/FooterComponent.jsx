@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Link } from 'react-router-dom';
-import Logo from './../assets/img/Logo.svg';
+import Logo from '/assets/img/Logo.svg';
 export default function FooterComponent() {
   return (
     <footer className="bg-gradient p-2">
