@@ -53,18 +53,18 @@ export default function ContactPage() {
             Póngase en contacto con nosotros, responderemos en breve.</p>
           <div className="row  mx-2">
             <div className="w-100 col-md-9 mb-md-0 mb-5 ">
-              <form id="contact-form">
+              <form id="contact-form" onSubmit={handleButton}>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="md-form mb-0">
                       <label htmlFor="name"></label>
-                      <input type="text" id="name" name="name" className="form-control"  placeholder="Nombre" onChange={event => setNombre(event.target.value)} value={nombre}/>
+                      <input type="text" required id="name" name="name" className="form-control" placeholder="Nombre" onChange={event => setNombre(event.target.value)} value={nombre}/>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="md-form mb-0">
                       <label htmlFor="email"></label>
-                      <input type="text" id="email" name="email" className="form-control" placeholder="E-mail" onChange={event => setEmail(event.target.value)} value={email}/>
+                      <input type="email" required id="email" name="email" className="form-control" placeholder="E-mail" onChange={event => setEmail(event.target.value)} value={email}/>
                     </div>
                   </div>
                 </div>
@@ -72,13 +72,13 @@ export default function ContactPage() {
                   <div className="col-md-6">
                     <div className="md-form mb-0">
                       <label htmlFor="numero"></label>
-                      <input type="text" id="numero" name="numero" className="form-control" placeholder="Número" onChange={event => setnumero(event.target.value)} value={numero}/>
+                      <input type="tel" pattern="[0-9]+" required id="numero" name="numero" className="form-control" placeholder="Número" onChange={event => setnumero(event.target.value)} value={numero}/>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="md-form mb-0">
                       <label htmlFor="subject"></label>
-                      <input type="text" id="subject" name="subject" className="form-control" placeholder="Asunto" onChange={event => setAsunto(event.target.value)} value={asunto}/>
+                      <input type="text" required id="subject" name="subject" className="form-control" placeholder="Asunto" onChange={event => setAsunto(event.target.value)} value={asunto}/>
                     </div>
                   </div>
                 </div>
@@ -86,12 +86,12 @@ export default function ContactPage() {
                   <div className="col-md-12">
                     <div className="md-form">
                       <label htmlFor="message"></label>
-                      <textarea type="text" id="message" name="message" rows="2" className="form-control md-textarea" placeholder="Mensaje" onChange={event => setMensaje(event.target.value)} value={mensaje}></textarea>
+                      <textarea type="text" required id="message" name="message" rows="2" className="form-control md-textarea" placeholder="Mensaje" onChange={event => setMensaje(event.target.value)} value={mensaje}></textarea>
                     </div>
                   </div>
                 </div>
                 <div className="text-center mt-4 my-lg-4">
-                  <button type="submit" className="px-4 py-3 text-white bg-green border-0 rounded-pill btn-green" onClick={handleButton}>Enviar</button>
+                  <button type="submit" className="px-4 py-3 text-white bg-green border-0 rounded-pill btn-green">Enviar</button>
                 </div>
               </form>
               <div className="status"></div>
