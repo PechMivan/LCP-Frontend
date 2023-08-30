@@ -15,7 +15,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/nosotros" element={<AboutPage />} />
         <Route path="/contacto" element={<ContactPage />} />
-        <Route path="/estudios" element={<StudiesPage />} />
+        <Route path="/estudios/:usuario?" element={<StudiesPage />} />
         <Route path="/agendar-cita" element={<AgendarCita />} />
       </Routes>
       <FooterComponent/>

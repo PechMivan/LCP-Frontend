@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-export default function AccordionEstudios({index, categoria, getData}) {
+
+export default function AccordionEstudios({index, categoria, getData, usuario}) {
   const eliminar = (categoria, analisis) => {
     console.log(categoria, analisis);
     getData();
@@ -15,13 +16,13 @@ export default function AccordionEstudios({index, categoria, getData}) {
             </button>
           </h2>
           <div id={`flush-collapseOne${index}`} className="accordion-collapse collapse" data-bs-parent={`#accordionFlushExample${index}`}>
-            <div className="accordion-body p-0">
+            <div className="accordion-body p-0 pb-2">
             <table className="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th className="px-0" scope="col">Estudio</th>
-                  <th scope="col">Precio</th>
+                  <th scope="col" className="text-center">Opciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -30,9 +31,12 @@ export default function AccordionEstudios({index, categoria, getData}) {
                     <tr key={key}>
                       <th>{key+1}</th>
                       <td className="px-0">{estudio.nombre}</td>
-                      <td>
-                        <button onClick={() => eliminar (categoria.especialidad, estudio.nombre)}>
+                      <td align="center">
+                        <button className={`btn btn-danger ${usuario === "admin" ? "d-block" :"d-none"}`} onClick={() => eliminar (categoria.especialidad, estudio.nombre)}>
                           <i className="bi bi-trash"></i>
+                        </button>
+                        <button className={`btn btn-info ${usuario === "admin" ? "d-none" :"d-block"}`} onClick={() => eliminar (categoria.especialidad, estudio.nombre)}>
+                          Ver
                         </button>
                       </td>
                     </tr>
@@ -40,7 +44,10 @@ export default function AccordionEstudios({index, categoria, getData}) {
                 }
               </tbody>
               </table>
-              <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target= {`#exampleModal${index}`} data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+              <button type="button" data-bs-toggle="modal" data-bs-target= {`#exampleModal${index}`} data-bs-whatever="@getbootstrap" className={`btn btn-primary ${usuario === "admin" ? "d-block" :"d-none"}`}>
+                <i className="bi bi-plus-circle me-1"></i>
+                Crear analisis
+              </button>
 
               <div className="modal fade" id={`exampleModal${index}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
@@ -52,18 +59,18 @@ export default function AccordionEstudios({index, categoria, getData}) {
                     <div className="modal-body">
                       <form>
                         <div className="mb-3">
-                          <label htmlFor={`recipient-name${index}`} className="col-form-label">Recipient:</label>
+                          <label htmlFor={`recipient-name${index}`} className="col-form-label">Nombre:</label>
                           <input type="text" className="form-control" id= {`recipient-name${index}`}/>
                         </div>
                         <div className="mb-3">
-                          <label htmlFor={`message-text${index}`} className="col-form-label">Message:</label>
+                          <label htmlFor={`message-text${index}`} className="col-form-label">Descripción:</label>
                           <textarea className="form-control" id= {`message-text${index}`}></textarea>
                         </div>
                       </form>
                     </div>
                     <div className="modal-footer">
-                      <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" className="btn btn-primary">Send message</button>
+                      <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                      <button type="button" className="btn btn-primary">Guardar</button>
                     </div>
                   </div>
                 </div>
