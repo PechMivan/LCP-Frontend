@@ -3,14 +3,14 @@ import AccordionEstudios from "../components/AccordionEstudios";
 export default function StudiesPage() {
 
   const [categorias, setCategorias] = useState([]);
-
+  const getData = async () => {
+    const response = await fetch("https://apilcp.onrender.com/api/estudios");
+    const cat = await response.json();
+    console.log("Obtenemos Datos");
+    setCategorias(cat);
+  }
   useEffect(() => {
-    const getData = async () => {
-      const response = await fetch("https://apilcp.onrender.com/api/estudios");
-      const cat = await response.json();
-      console.log(cat);
-      setCategorias(cat);
-    }
+
     getData();
 
   }, [])
@@ -22,7 +22,7 @@ export default function StudiesPage() {
         <div className="w-100 row">
             {
               categorias.map((categoria, index) => (
-                <AccordionEstudios key={index} categoria={categoria} index={index} />
+                <AccordionEstudios key={index} categoria={categoria} index={index} getData = {getData}/>
               ))
             }
         </div>

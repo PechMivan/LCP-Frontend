@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
-export default function AccordionEstudios({index, categoria}) {
+export default function AccordionEstudios({index, categoria, getData}) {
+  const eliminar = (categoria, analisis) => {
+    console.log(categoria, analisis);
+    getData();
+  } 
   return (
     <>
       <div className="accordion accordion-flush col-12 col-md-6" id={`accordionFlushExample${index}`} >
@@ -26,12 +30,44 @@ export default function AccordionEstudios({index, categoria}) {
                     <tr key={key}>
                       <th>{key+1}</th>
                       <td className="px-0">{estudio.nombre}</td>
-                      <td>${estudio.precio}</td>
+                      <td>
+                        <button onClick={() => eliminar (categoria.especialidad, estudio.nombre)}>
+                          <i className="bi bi-trash"></i>
+                        </button>
+                      </td>
                     </tr>
                   ))
                 }
               </tbody>
-            </table>
+              </table>
+              <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target= {`#exampleModal${index}`} data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+              <div className="modal fade" id={`exampleModal${index}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h3 className="modal-title fs-5" id={`exampleModalLabel${index}`} >{categoria.especialidad}</h3>
+                      <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                      <form>
+                        <div className="mb-3">
+                          <label htmlFor={`recipient-name${index}`} className="col-form-label">Recipient:</label>
+                          <input type="text" className="form-control" id= {`recipient-name${index}`}/>
+                        </div>
+                        <div className="mb-3">
+                          <label htmlFor={`message-text${index}`} className="col-form-label">Message:</label>
+                          <textarea className="form-control" id= {`message-text${index}`}></textarea>
+                        </div>
+                      </form>
+                    </div>
+                    <div className="modal-footer">
+                      <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" className="btn btn-primary">Send message</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
