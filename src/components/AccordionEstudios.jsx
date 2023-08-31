@@ -1,12 +1,33 @@
 /* eslint-disable react/prop-types */
 
+import { useState } from "react";
+import { Toaster, toast } from 'sonner';
+
 export default function AccordionEstudios({index, categoria, getData, usuario}) {
-  const eliminar = (categoria, analisis) => {
-    console.log(categoria, analisis);
+  const [estudio, setEstudio] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const eliminar = async (analisis) => {
+    await fetch(`https://apilcp.onrender.com/api/estudios/${encodeURI(analisis)}`, { method: 'DELETE' });
     getData();
+    toast.success('El estudio se ha eliminado.');
+  } 
+  const crear = async (categoria, nombre, descripcion) => {
+    await fetch(`https://apilcp.onrender.com/api/estudios/${encodeURI(categoria)}`,
+     { 
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({nombre, precio: "100"}) 
+    });
+    getData();
+    setEstudio("");
+    setDescripcion("");
+    toast.success('El nuevo estudio se ha creado.');
   } 
   return (
     <>
+    <Toaster richColors position="top-right"/>
       <div className="accordion accordion-flush col-12 col-md-6" id={`accordionFlushExample${index}`} >
         <div className="accordion-item">
           <h2 className="accordion-header">
@@ -32,10 +53,10 @@ export default function AccordionEstudios({index, categoria, getData, usuario}) 
                       <th>{key+1}</th>
                       <td className="px-0">{estudio.nombre}</td>
                       <td align="center">
-                        <button className={`btn btn-danger ${usuario === "admin" ? "d-block" :"d-none"}`} onClick={() => eliminar (categoria.especialidad, estudio.nombre)}>
+                        <button className={`btn btn-danger ${usuario === "admin" ? "d-block" :"d-none"}`} onClick={() => eliminar (estudio.nombre)}>
                           <i className="bi bi-trash"></i>
                         </button>
-                        <button className={`btn btn-info ${usuario === "admin" ? "d-none" :"d-block"}`} onClick={() => eliminar (categoria.especialidad, estudio.nombre)}>
+                        <button className={`btn btn-info ${usuario === "admin" ? "d-none" :"d-block"}`} onClick={() => eliminar (estudio.nombre)}>
                           Ver
                         </button>
                       </td>
@@ -60,17 +81,17 @@ export default function AccordionEstudios({index, categoria, getData, usuario}) 
                       <form>
                         <div className="mb-3">
                           <label htmlFor={`recipient-name${index}`} className="col-form-label">Nombre:</label>
-                          <input type="text" className="form-control" id= {`recipient-name${index}`}/>
+                          <input type="text" className="form-control" id= {`recipient-name${index}`} onChange={event => setEstudio(event.target.value)} value={estudio}/>
                         </div>
                         <div className="mb-3">
                           <label htmlFor={`message-text${index}`} className="col-form-label">Descripción:</label>
-                          <textarea className="form-control" id= {`message-text${index}`}></textarea>
+                          <textarea className="form-control" id= {`message-text${index}`} onChange={event => setDescripcion(event.target.value)} value={descripcion}></textarea>
                         </div>
                       </form>
                     </div>
                     <div className="modal-footer">
                       <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <button type="button" className="btn btn-primary">Guardar</button>
+                      <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => crear (categoria.especialidad, estudio, descripcion)}>Guardar</button>
                     </div>
                   </div>
                 </div>
