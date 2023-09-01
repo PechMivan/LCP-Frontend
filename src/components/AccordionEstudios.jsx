@@ -13,7 +13,7 @@ export default function AccordionEstudios({index, categoria, getData, usuario}) 
   } 
   const crear = async (categoria, nombre, descripcion) => {
     await fetch(`https://apilcp.onrender.com/api/estudios/${encodeURI(categoria)}`,
-     { 
+    { 
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
