@@ -17,13 +17,13 @@ export default function ContactPage() {
 
   const handleNumeroChange = (e) => {
     const input = e.target.value;
-    const numeroTelefono = input.replace(/[^0-9]+/g, '');
+    const numeroTelefono = input.replace(/[^0-9]+/g, ' ');
     setnumero(numeroTelefono);
   }
 
   const handleNombreChange = (e) => {
     const input = e.target.value;
-    const nombreValido = input.replace(/[^A-Za-zÀ-ž\s]+/ig, '');
+    const nombreValido = input.replace(/[^A-Za-zÀ-ž\s]+/ig, "");
     setNombre(nombreValido);
   };
 
@@ -70,7 +70,7 @@ export default function ContactPage() {
                   <div className="col-md-6">
                     <div className="md-form mb-0">
                       <label htmlFor="name"></label>
-                      <input type="text" pattern="[^A-Za-zÀ-ž\s]+/ig+" title="Ingrese su nombre" required id="name" name="name" className="form-control" placeholder="Nombre" onChange={handleNombreChange} value={nombre}/>
+                      <input type="text"  title="Ingrese su nombre" required id="name" name="name" className="form-control" placeholder="Nombre" onChange={handleNombreChange} value={nombre}/>
                     </div>
                   </div>
                   <div className="col-md-6">
