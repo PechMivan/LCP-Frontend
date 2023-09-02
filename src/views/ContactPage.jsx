@@ -2,37 +2,49 @@ import { useState } from "react";
 import { Toaster, toast } from 'sonner';
 export default function ContactPage() {
   const [nombre, setNombre] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setmail] = useState('');
   const [numero, setnumero] = useState('');
   const [asunto, setAsunto] = useState('');
   const [mensaje, setMensaje] = useState('');
 
   const borrarDatos = () => {
     setNombre('');
-    setEmail('');
+    setmail('');
     setnumero('');
     setAsunto('');
     setMensaje('');
   }
 
+  const handleNumeroChange = (e) => {
+    const input = e.target.value;
+    const numeroTelefono = input.replace(/[^0-9]+/g, '');
+    setnumero(numeroTelefono);
+  }
+
+  const handleNombreChange = (e) => {
+    const input = e.target.value;
+    const nombreValido = input.replace(/[^A-Za-zÀ-ž\s]+/ig, '');
+    setNombre(nombreValido);
+  };
+
   const handleButton = async (e) => {
     e.preventDefault();
     try {
-      await fetch( "https://formsubmit.co/ajax/leonrosant92@gmail.com",
-      //await fetch( "https://formsubmit.co/ajax/laboratorioclinicoponiente@gmail.com",
-        {
-          method: "POST",
-          headers: { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(
-            {
-              nombre,email,numero,asunto,mensaje
-            }
-          )
-        }
-      )
+       await fetch( "https://formsubmit.co/ajax/leonrosant92@gmail.com",
+      // //await fetch( "https://formsubmit.co/ajax/laboratorioclinicoponiente@gmail.com",
+         {
+           method: "POST",
+           headers: { 
+             'Content-Type': 'application/json',
+             'Accept': 'application/json'
+           },
+           body: JSON.stringify(
+             {
+               nombre,email,numero,asunto,mensaje
+             }
+           )
+         }
+       )
       borrarDatos();
       toast.success('El mensaje se ha enviado.')
     } catch (error) {
@@ -58,13 +70,13 @@ export default function ContactPage() {
                   <div className="col-md-6">
                     <div className="md-form mb-0">
                       <label htmlFor="name"></label>
-                      <input type="text" required id="name" name="name" className="form-control" placeholder="Nombre" onChange={event => setNombre(event.target.value)} value={nombre}/>
+                      <input type="text" pattern="[^A-Za-zÀ-ž\s]+/ig+" title="Ingrese su nombre" required id="name" name="name" className="form-control" placeholder="Nombre" onChange={handleNombreChange} value={nombre}/>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="md-form mb-0">
                       <label htmlFor="email"></label>
-                      <input type="email" required id="email" name="email" className="form-control" placeholder="E-mail" onChange={event => setEmail(event.target.value)} value={email}/>
+                      <input type="email" required id="email" name="email" className="form-control" placeholder="E-mail" onChange={event => setmail(event.target.value)} value={email}/>
                     </div>
                   </div>
                 </div>
@@ -72,7 +84,7 @@ export default function ContactPage() {
                   <div className="col-md-6">
                     <div className="md-form mb-0">
                       <label htmlFor="numero"></label>
-                      <input type="tel" pattern="[0-9]+" required id="numero" name="numero" className="form-control" placeholder="Número" onChange={event => setnumero(event.target.value)} value={numero}/>
+                      <input type="tel"pattern="[0-9]*" maxLength="15" minLength="10" required id="numero" name="numero" className="form-control" placeholder="Número" onChange={handleNumeroChange} value={numero}/>
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -91,10 +103,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="text-center mt-4 my-lg-4">
-                  <button type="submit" className="px-5 py-3 text-white bg-green border-0 rounded-pill btn-green">
-                    <i className="bi bi-send me-2"></i>
-                    Enviar
-                    </button>
+                  <button type="submit" className="px-4 py-3 text-white bg-green border-0 rounded-pill btn-green">Enviar</button>
                 </div>
               </form>
               <div className="status"></div>

@@ -258,6 +258,11 @@ ul {
   margin-right: 10px;
 }
 
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  filter: invert(108%);
+}
+
 .info{
   text-align: justify;
   text-justify: inter-word;
