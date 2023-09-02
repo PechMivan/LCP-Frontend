@@ -28,7 +28,7 @@ export default function AccordionEstudios({index, categoria, getData, usuario}) 
   return (
     <>
     <Toaster richColors position="top-right"/>
-      <div className="accordion accordion-flush col-12 col-md-6" id={`accordionFlushExample${index}`} >
+      <div className="accordion accordion-flush col-12" id={`accordionFlushExample${index}`} >
         <div className="accordion-item">
           <h2 className="accordion-header">
             <button className="accordion-button collapsed" type="button" data-bs-toggle={`collapse`} data-bs-target={`#flush-collapseOne${index}`} aria-expanded="false" aria-controls={`#flush-collapseOne${index}`} >

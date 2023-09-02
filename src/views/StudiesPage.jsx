@@ -5,10 +5,14 @@ import PlaceHolderComponent from "../components/PlaceHolderComponent";
 export default function StudiesPage() {
   const { usuario } = useParams();
   const [categorias, setCategorias] = useState([]);
+  const [ cat1, setCat1 ] = useState([]);
+  const [ cat2, setCat2 ] = useState([]);
 
   const getData = async () => {
     const response = await fetch("https://apilcp.onrender.com/api/estudios");
     const cat = await response.json();
+    setCat1(cat.slice(0,cat.length/2));
+    setCat2(cat.slice(cat.length/2));
     console.log("Obtenemos Datos");
     setCategorias(cat);
   }
@@ -26,11 +30,20 @@ export default function StudiesPage() {
           <PlaceHolderComponent/>
         </div>
         <div className="w-100 row">
+            <div className="col-12 col-md-6">
             {
-              categorias.map((categoria, index) => (
+              cat1.map((categoria, index) => (
                 <AccordionEstudios key={index} categoria={categoria} index={index} getData={getData} usuario={usuario ? usuario : 'usuario'}/>
               ))
             }
+            </div>
+            <div className="col-12 col-md-6">
+            {
+              cat2.map((categoria, index) => (
+                <AccordionEstudios key={index} categoria={categoria} index={index+cat1.length} getData={getData} usuario={usuario ? usuario : 'usuario'}/>
+              ))
+            }
+            </div>
         </div>
       </div>
     </>
