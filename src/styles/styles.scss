@@ -257,3 +257,8 @@ ul {
   font-size: 1rem !important;
   margin-right: 10px;
 }
+
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  filter: invert(108%);
+}
