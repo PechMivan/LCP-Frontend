@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+import { Link } from 'react-router-dom';
 import { useState } from "react";
 import { Toaster, toast } from 'sonner';
 
@@ -56,9 +56,8 @@ export default function AccordionEstudios({index, categoria, getData, usuario}) 
                         <button className={`btn btn-danger ${usuario === "admin" ? "d-block" :"d-none"}`} onClick={() => eliminar (estudio.nombre)}>
                           <i className="bi bi-trash"></i>
                         </button>
-                        <button className={`btn btn-info ${usuario === "admin" ? "d-none" :"d-block"}`} onClick={() => eliminar (estudio.nombre)}>
-                          Ver
-                        </button>
+                        <Link className={`btn btn-info ${usuario === "admin" ? "d-none" :"d-block"}`} to={`/estudio/${estudio.nombre}`}>Ver</Link>
+                
                       </td>
                     </tr>
                   ))
