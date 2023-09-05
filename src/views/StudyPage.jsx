@@ -52,7 +52,6 @@ export default function StudyPage() {
           </div>
 
           <div className="row content-info">
-            <div className="">
               <div className="row d-flex justify-content-around">
                 <div className="col-6">
                   <h3>Indicaciones</h3>
@@ -64,6 +63,7 @@ export default function StudyPage() {
                   </h3>
                 </div>
               </div>
+              <div className="row d-flex justify-content-around m-0 p-4">
               <ul className="my-3">
                 <li>
                   Al agendar tu cita, asegurarás tu lugar en la fecha elegida.
@@ -74,7 +74,7 @@ export default function StudyPage() {
                 </li>
                 <li>Evitar tomar alcohol o cualquier sustancia similar.</li>
               </ul>
-            </div>
+              </div>
           </div>
         </div>
         <div className="col-lg-3">
