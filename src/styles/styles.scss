@@ -289,7 +289,10 @@ ul {
 
   #envianosMensaje {
     background: #AAC7FF;
-    border-radius: 20px;
+    border-radius: 20px 20px 0 0;
+    box-shadow:
+    inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
   }
   
   #form {
@@ -298,7 +301,6 @@ ul {
   
   #ubicacion {
     background: #EFF8FF;
-    border-radius: 20px;
     margin-top: 20px;
   }
 

@@ -111,7 +111,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      <div className="container justify-content-center align-items-center my-5 p-3" id="ubicacion">
+      <div className="container justify-content-center align-items-center my-5 p-3 content-info" id="ubicacion">
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-12 col-md-6 justify-content-center align-items-center">
             <h3 className="text-center">Ubicación </h3>
