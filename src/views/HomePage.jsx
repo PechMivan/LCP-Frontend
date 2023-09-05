@@ -82,7 +82,7 @@ function HomePage() {
         </div>
         {
           destacados.map( (destacado, i) => (
-            <div key={i} className="bg-blue-ligth p-3 rounded-1 max-width-320 d-flex flex-column justify-content-between align-items-center">
+            <div key={i} className="bg-blue-ligth p-3 rounded-1 max-width-320 d-flex flex-column justify-content-between align-items-center content-info">
               <img src={destacado.img} alt="Imagen de analisis" className="w-100 rounded-1"/>
               <div className="flex-grow-1 d-flex flex-column justify-content-between">
                 <p className="text-center text-color-principal text-title-destacado">{destacado.title}</p>

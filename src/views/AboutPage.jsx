@@ -66,7 +66,7 @@ export default function AboutPage() {
     <>
     <h1 className="mt-4 text-center">Acerca de nosotros</h1>
     <div className="container min-vh-100">
-      <div className="row justify-content-center align-items-center my-5 row-info p-4">
+      <div className="row justify-content-center align-items-center my-5 content-info p-4">
         <h3 className="text-align-left">Misión</h3>
         <hr/>
         <div className="col-lg-6 p-2 order-2 order-lg-1">
@@ -81,7 +81,7 @@ export default function AboutPage() {
           </p>
         </div>
       </div>
-      <div className="row justify-content-center align-items-center my-5 row-info p-4">
+      <div className="row justify-content-center align-items-center my-5 content-info p-4">
         <h3 className="h3-izquerda">Visión</h3>
         <hr/>
         <div className="col-lg-6">
@@ -99,7 +99,7 @@ export default function AboutPage() {
       <div className="row justify-content-center align-items-center">
         <div className="col-lg-10 justify-content-center">
           <h3>Nuestro Equipo</h3>
-          <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+          <div id="carouselExampleInterval" className="carousel slide content-info" data-bs-ride="carousel">
             <div className="carousel-inner">
               {
                 equipo.map( (p) => (

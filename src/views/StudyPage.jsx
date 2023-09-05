@@ -1,49 +1,98 @@
 import { useParams } from "react-router-dom";
 
+const testArray = [
+  {
+    nombre: "prueba",
+    descripcion:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consequuntur officia aliquam veritatis consequatur quos fugit assumenda suscipit quas. Aperiam quod fuga maxime iure eos, repellat vitae dolore libero delectus!",
+    img: "/assets/img/about/vision.jpg",
+  },
+  {
+    nombre: "prueba",
+    descripcion:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consequuntur officia aliquam veritatis consequatur quos fugit assumenda suscipit quas. Aperiam quod fuga maxime iure eos, repellat vitae dolore libero delectus!",
+    img: "/assets/img/about/vision.jpg",
+  },
+  {
+    nombre: "prueba",
+    descripcion:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus consequuntur officia aliquam veritatis consequatur quos fugit assumenda suscipit quas. Aperiam quod fuga maxime iure eos, repellat vitae dolore libero delectus!",
+    img: "/assets/img/about/vision.jpg",
+  },
+];
+
 export default function StudyPage() {
   const { estudio } = useParams();
   return (
     <>
-      <div className="row justify-content-center align-items-center my-5 row-info p-4">
-        <h3 className="text-center">{estudio}</h3>
-        <hr />
-        <div className="col-lg-6 p-2">
-          <img
-            className="img-info img-fluid"
-            src="/assets/img/about/vision.jpg"
-            alt="Imagen vision"
-          />
-        </div>
-        <div className="col-lg-6">
-          <p className="info">
-            Nuestra visión es ser reconocidos como el laboratorio clínico líder
-            y de referencia en nuestra región.Buscamos alcanzar la excelencia en
-            el ámbito del diagnóstico médico a través de la innovación
-            constante, la investigación y la adopción de las mejores prácticas
-            en el campo de la medicina de laboratorio. Aspiramos a establecer
-            relaciones de confianza y colaboración con los profesionales de la
-            salud y las instituciones médicas, con el objetivo de convertirnos
-            en un pilar fundamental en la mejora de la salud y el bienestar de
-            la comunidad que servimos.
-          </p>
-          
-          <div className="m-4">
-            <h4>Indicaciones</h4>
-            <ul>
-              <li>
-                Al agendar tu cita, asegurarás tu lugar en la fecha elegida.
-              </li>
-              <li>
-                Si el paciente es menor de edad, deberá acudir con un adulto;
-                padre, madre o tutor.
-              </li>
-            </ul>
-
-            <h4>Tiempo de entrega de resultados</h4>
-            <ul>
-              <li>1 dia, 30 minutos, 23 segundos</li>
-            </ul>
+      <div className="row gx-5 justify-content-center my-5 p-4">
+        <div className="col-lg-8 p-4 p-lg-2">
+          <div className="row">
+            <h3 className="text-center">{estudio}</h3>
+            <img
+              className="img-info img-fluid"
+              src="/assets/img/about/vision.jpg"
+              alt="Imagen vision"
+            />
           </div>
+          <div className="row my-5">
+            <p className="info lh-lg fs-4">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum
+              quos eligendi adipisci atque, obcaecati maxime ipsa nisi, vitae,
+              temporibus quibusdam voluptate beatae omnis? Numquam quidem iusto
+              itaque animi. Neque, exercitationem! Officia commodi nisi repellat
+              fugiat sint perferendis accusamus neque voluptatibus ratione modi.
+              Nobis repudiandae pariatur facere sed ullam totam, eum molestiae
+              fuga tempora odio accusantium placeat, molestias ad quae alias?
+              Ipsum sint molestiae vitae adipisci. Perspiciatis itaque
+              molestiae, reprehenderit aut optio explicabo et? Sapiente
+              recusandae earum cupiditate et maxime deserunt. Quod sapiente
+              nesciunt obcaecati porro sed omnis quia asperiores labore.
+            </p>
+          </div>
+
+          <div className="row content-info">
+            <div className="">
+              <div className="row d-flex justify-content-around">
+                <div className="col-6">
+                  <h3>Indicaciones</h3>
+                </div>
+                <div className="col-6">
+                  <h3 className="bi bi-clock-history text-center">
+                    {" "}
+                    1 - 2 días
+                  </h3>
+                </div>
+              </div>
+              <ul className="my-3">
+                <li>
+                  Al agendar tu cita, asegurarás tu lugar en la fecha elegida.
+                </li>
+                <li>
+                  Si el paciente es menor de edad, deberá acudir con un adulto;
+                  padre, madre o tutor.
+                </li>
+                <li>Evitar tomar alcohol o cualquier sustancia similar.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-3">
+          <h3 className="text-center">Otros servicios</h3>
+          {testArray.map((estudio, key) => {
+            return (
+              <div class="card my-3 content-info">
+                <img src={estudio.img} class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title">{estudio.nombre}</h5>
+                  <p class="card-text">{estudio.descripcion}</p>
+                  <a href="#" class="btn btn-primary">
+                    Ver
+                  </a>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>
