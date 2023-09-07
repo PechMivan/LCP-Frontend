@@ -355,9 +355,51 @@ ul {
 
   .container-login{
     
+    @include mobile-large {
+      background: url("/assets/img/login/login-bgsm.jpg");
+      background-size: 100%;
+      background-size: cover;
+    }
+
+    @include tablet {
+      background: url("/assets/img/login/login-bgsm.jpg");
+      background-size: 100%;
+      background-size: cover;
+    }
+
+    @include desktop {
       background: url("/assets/img/login/login-bg.jpg");
       background-size: 100%;
       background-size: cover;
+      
+    }
+
+     
+    
+    }
+
+  .container-cita{
+
+    @include mobile-large {
+      background: url("/assets/img/citas/citasbgsm.jpg");
+      background-size: 100%;
+      background-size: cover;
+    }
+
+    @include tablet {
+      background: url("/assets/img/citas/citasbgsm.jpg");
+      background-size: 100%;
+      background-size: cover;
+    }
+
+    @include desktop {
+      background: url("/assets/img/citas/citasbg.jpg");
+      background-size: 100%;
+      background-size: cover;
+    
+      
+    }
+    
      
     
     }

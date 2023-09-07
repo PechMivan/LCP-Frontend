@@ -11,8 +11,8 @@ export default function LoginPage() {
     
     <>
     <div className="container-login">
-        <div className="row d-flex justify-content-center align-content-center ">
-            <div className="col-12 text-center p-5 bg-blur-login">
+        <div className="row d-flex justify-content-center align-content-center p-5">
+            <div className="col-12 text-center p-5 bg-blur-login m-5">
                 <h1>Iniciar Sesión</h1>
                 <form /* onSubmit={enviarDatos} */ className="row">
 

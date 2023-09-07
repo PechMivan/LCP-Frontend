@@ -88,7 +88,7 @@ function HomePage() {
                 <p className="text-center text-color-principal text-title-destacado">{destacado.title}</p>
                 <p className="text-color-principal text-subtitle-destacado">{destacado.subtitle}</p>
                 <div className="w-100 d-flex justify-content-center">
-                  <ButtonCita/>
+                  <ButtonCita icon/>
                 </div>
               </div>
             </div>
