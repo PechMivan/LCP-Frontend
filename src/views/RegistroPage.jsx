@@ -55,6 +55,15 @@ export default function RegistroPage() {
                             </div>
 
                             <div className="mb-3">
+                                <label htmlFor="staticTel" className="col-12 col-form-label">
+                                    Teléfono Celular::
+                                </label>
+                                <div className="col-12">
+                                    <input type="tel" className="form-control" id="staticTel" required/>
+                                </div>
+                            </div>   
+
+                            <div className="mb-3">
                                 <label htmlFor="staticEmail" className="col-12 col-form-label">
                                     Correo electrónico:
                                 </label>
