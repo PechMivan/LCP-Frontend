@@ -161,6 +161,14 @@
 .btn-green {
   font-size: 0.9rem;
   transition: all;
+  border: 0;
+  color: white;
+  background-color:#2ec273;
+  height: 3rem;
+  width: auto;
+  border-radius: 15px;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
 
   @include tablet {
     font-size: 1.2rem;
@@ -169,6 +177,10 @@
   @include desktop {
     font-size: 1.3rem;
   }
+}
+
+.btn-green:hover {
+  background-color: #238b5d; 
 }
 
 .section-title {
@@ -314,35 +326,59 @@ ul {
     font-size: 5px;
   }
 
-  .bg-signup-img{
-    background-color: #d2d2d4;
+  .container-signup{
+    background-color: #e9e9e9;
+    background-size: 100%;
+    background-size: cover;
+   
+
+    
     @include mobile-large {
+      background: url("/assets/img/registro/bgimgsm.jpg");
+      background-size: 100%;
+      background-size: cover;
 
     }
 
     @include tablet {
+      background: url("/assets/img/registro/bgimgsm.jpg");
+      background-size: 100%;
+      background-size: cover;
     }
 
     @include desktop {
       background: url("/assets/img/registro/bgimg.jpg");
+      background-size: 100%;
       background-size: cover;
     }
     }
 
+  .container-login{
+    
+      background: url("/assets/img/login/login-bg.jpg");
+      background-size: 100%;
+      background-size: cover;
+     
+    
+    }
+
   .bg-blur{
       
-      @include mobile-large {
-
-      }
-  
-      @include tablet {
-      }
-  
-      @include desktop {
+      
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 20px;
-      }
+      
+  }
+
+  .bg-blur-login{
+      
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+      
   }

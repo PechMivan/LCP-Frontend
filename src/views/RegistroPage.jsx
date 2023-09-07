@@ -9,8 +9,8 @@ export default function RegistroPage() {
     }
     return (
         <>
-            <div className="container bg-signup-img ">
-                <div className="row d-flex justify-content-end align-content-center min-vh-100 m-2 ">
+            <div className="container-signup">
+                <div className="row d-flex justify-content-end align-content-center mx-5 ">
                     <div className="col-12 col-lg-6 order-lg-2 p-5 bg-blur my-5">
                         <h1>Registro</h1>
                         <form onSubmit={enviarDatos} className="row">
@@ -91,16 +91,13 @@ export default function RegistroPage() {
                             </div>
 
                             <div className="col-12 mt-3 text-center">
-                                <input type="submit" value="Registrarme" className="px-4 py-3 text-white bg-green border-0 rounded-pill btn-green"/>
+                                <input type="submit" value="Registrarme" className="btn-green"/>
                             </div>
                             
                         </form>
                         
                         <div className="mt-3 text-center">
-                            <p>
-                                ¿Ya tienes una cuenta registrada? <Link to="/login">Inicia sesión aquí</Link>
-                            </p>
-                            
+                            <p>¿Ya tienes una cuenta registrada? <Link to="/login">Inicia sesión aquí</Link></p>
                         </div>
                     </div>
 

@@ -103,7 +103,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="text-center mt-4 my-lg-4">
-                  <button type="submit" className="px-4 py-3 text-white bg-green border-0 rounded-pill btn-green">Enviar</button>
+                  <button type="submit" className="btn-green">Enviar</button>
                 </div>
               </form>
               <div className="status"></div>
