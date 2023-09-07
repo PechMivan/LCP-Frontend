@@ -23,6 +23,12 @@ export default function NavComponent() {
           <li className="nav-item">
             <Link className="nav-link" to="/contacto">Contáctanos</Link>
           </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/registro">Registro</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/login">Inicio de sesión</Link>
+          </li>
         </ul>
         
    {/*      <form className="d-flex" role="search">

@@ -289,7 +289,7 @@ ul {
 
   #envianosMensaje {
     background: #AAC7FF;
-    border-radius: 20px 20px 0 0;
+    //border-radius: 20px 20px 0 0;
     box-shadow:
     inset 0 -3em 3em rgba(0, 0, 0, 0.1),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
@@ -306,10 +306,43 @@ ul {
 
   #tituloubi{
     background: linear-gradient(to right, #1f7dfe, #006dd2, #005ba6, #00497a, #123651);
-    border-radius: 20px 20px 0 0;
+    //border-radius: 20px 20px 0 0;
     color: white;
   }
 
   li{
     font-size: 5px;
+  }
+
+  .bg-signup-img{
+    background-color: #d2d2d4;
+    @include mobile-large {
+
+    }
+
+    @include tablet {
+    }
+
+    @include desktop {
+      background: url("/assets/img/registro/bgimg.jpg");
+      background-size: cover;
+    }
+    }
+
+  .bg-blur{
+      
+      @include mobile-large {
+
+      }
+  
+      @include tablet {
+      }
+  
+      @include desktop {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+      }
   }

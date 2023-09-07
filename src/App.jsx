@@ -7,6 +7,8 @@ import StudiesPage from "./views/StudiesPage";
 import FooterComponent from "./components/FooterComponent";
 import AgendarCita from "./views/AgendarCita";
 import StudyPage from "./views/StudyPage";
+import RegistroPage from "./views/RegistroPage";
+import LoginPage from "./views/LoginPage";
 
 const App = () => {
   return (
@@ -19,6 +21,9 @@ const App = () => {
         <Route path="/estudios/:usuario?" element={<StudiesPage />} />
         <Route path="/agendar-cita" element={<AgendarCita />} />
         <Route path="/estudio/:estudio" element={<StudyPage />} />
+        <Route path="/registro" element={<RegistroPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        
       </Routes>
       <FooterComponent/>
     </>
