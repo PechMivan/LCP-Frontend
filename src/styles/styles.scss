@@ -327,11 +327,9 @@ ul {
   }
 
   .container-signup{
-    background-color: #e9e9e9;
+    background: url("/assets/img/registro/bgimgsm.jpg");
     background-size: 100%;
     background-size: cover;
-   
-
     
     @include mobile-large {
       background: url("/assets/img/registro/bgimgsm.jpg");
@@ -354,29 +352,17 @@ ul {
     }
 
   .container-login{
+    background: url("/assets/img/login/lab.jpg");
+    background-size: 100%;
+    background-size: cover;
+    backdrop-filter: blur (100px);
     
-    @include mobile-large {
-      background: url("/assets/img/login/login-bgsm.jpg");
-      background-size: 100%;
-      background-size: cover;
-    }
-
-    @include tablet {
-      background: url("/assets/img/login/login-bgsm.jpg");
-      background-size: 100%;
-      background-size: cover;
-    }
-
-    @include desktop {
-      background: url("/assets/img/login/login-bg.jpg");
-      background-size: 100%;
-      background-size: cover;
-      
+    
     }
 
      
     
-    }
+    
 
   .container-cita{
 
@@ -407,18 +393,17 @@ ul {
   .bg-blur{
       
       
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 30px rgba(255, 255, 255, 0.712);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 20px;
       
   }
-
   .bg-blur-login{
       
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 30px rgba(255, 255, 255, 0.753);
+        backdrop-filter: saturate(1%) ;
         -webkit-backdrop-filter: blur(5px);
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 20px;
