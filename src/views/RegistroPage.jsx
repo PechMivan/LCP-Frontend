@@ -31,13 +31,11 @@ export default function RegistroPage() {
           nombre: setNombre,
           apellidoP: setApellidoP,
           apellidoM: setApellidoM,
-
         };
 
       const pass = {
           password: setPassword,
           confirmPassword: setConfirmPassword,
-
         };
 
         const handleNumeroChange = (e) => {
@@ -54,12 +52,21 @@ export default function RegistroPage() {
             setCorreo(e.target.value);
       };
 
-          const handlePasswordChange = (e, p) => {
-            setPassword(e.target.value);
-            if (pass[p]) {
-                pass[p](e.target.value);
-              }
+        const handlePasswordChange = (e) => {
+        const input = e.target.value;
+        if (input.length > 8) {
+            // Activar input de confirmar contraseña
+        }
+        setPassword(e.target.value);
       };
+
+      const handleConfirmPasswordChange = (e) => {
+        const input = e.target.value;
+        if (password === confirmPassword) {
+            
+        }
+        setConfirmPassword(e.target.value);
+  };
     
       const handleInputChange = (e, campo) => {
         const input = e.target.value;
@@ -150,7 +157,7 @@ export default function RegistroPage() {
                                     Contraseña:
                                 </label>
                                 <div className="col-12">
-                                    <input type="password" className="form-control" id="inputPassword" value={password} name="password" onChange={(e) => handlePasswordChange(e, 'password')} required/>
+                                    <input type="password" className="form-control" id="inputPassword" value={password} name="password" onChange={(e) => handlePasswordChange(e)} required/>
                                 </div>
                             </div>
 
@@ -159,12 +166,12 @@ export default function RegistroPage() {
                                     Confirmar contraseña:
                                 </label>
                                 <div className="col-12">
-                                    <input type="password" className="form-control" id="confirmPassword"  value={confirmPassword} onChange={(e) => handlePasswordChange(e, 'confirmPassword')} required/>
+                                    <input type="password" className="form-control" id="confirmPassword"  value={confirmPassword} onChange={(e) => handleConfirmPasswordChange(encodeURIComponent)} required/>
                                 </div>
                             </div>
 
                             <div className="col-12 mt-3 text-center">
-                                <input type="submit" value="Registrarme" className="btn-green"/>
+                                <input type="submit" ref={this.registro} value="Registrarme" className="btn-green"/>
                             </div>
                             
                         </form>
