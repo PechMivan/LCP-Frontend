@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { Toaster, toast } from 'sonner';
 
 export default function RegistroPage() {
   const {
@@ -7,15 +8,28 @@ export default function RegistroPage() {
     handleSubmit,
     formState: { errors },
     watch,
-    getValues
+    getValues,
+    reset
   } = useForm();
 
   const Registrar = (e) => {
-    console.log(e)
+    const users=JSON.parse(localStorage.getItem("users") || "[]");
+    if (  users.some(user => user.email === e.email )){
+      
+      toast.error('El usuario ya está registrado.');
+    } else {
+      users.push(e);
+      localStorage.setItem("users", JSON.stringify(users));
+      toast.success('El usuario se ha registrado.');
+      reset();
+    
+    }
+   
   };
 
   return (
     <>
+     <Toaster richColors position="top-right"/>
       <div className="container-signup">
         <div className="row d-flex justify-content-end align-content-center mx-5 ">
           <div className="col-12 col-lg-6 order-lg-2 p-5 bg-blur my-5">
@@ -34,7 +48,7 @@ export default function RegistroPage() {
                       required: true,
                       validate: {
                         minLength: (v) => v.length >= 2,
-                        matchPattern: (v) => /^[a-zA-Z]+$/.test(v),
+                        matchPattern: (v) => /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g.test(v),
                       },
                     })}
                   />
@@ -43,7 +57,7 @@ export default function RegistroPage() {
                     )}
 
                     {errors.name?.type === "minLength" && (
-                      <small className="text-danger">Nombre minimo 2 caracteres</small>
+                      <small className="text-danger">Nombre mínimo 2 caracteres</small>
                     )}
 
                     {errors.name?.type === "matchPattern" && (
@@ -66,7 +80,7 @@ export default function RegistroPage() {
                       required: true,
                       validate: {
                         minLength: (v) => v.length >= 2,
-                        matchPattern: (v) => /^[a-zA-Z]+$/.test(v),
+                        matchPattern: (v) => /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g.test(v),
                       },
                     })}
                   />

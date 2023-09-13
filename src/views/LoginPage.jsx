@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { Toaster, toast } from 'sonner';
+import {useState} from 'react';
+
 
 export default function LoginPage() {
+  const[isLogged, setIsLogged] = useState(false);
+  const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -14,14 +19,34 @@ export default function LoginPage() {
         e.preventDefault();
       };
 
+      const login = (e) => {
+        const users=JSON.parse(localStorage.getItem("users") || "[]");
+        if ( users.some(user => user.email === e.email)){
+          const user = users.find(user => user.email === e.email)
+          if(user.password === e.password){
+            toast.success('Sesión iniciada');
+            localStorage.setItem("user", JSON.stringify(user));
+            setIsLogged(true);
+            navigate("/");
+          } else {
+            toast.error('Usuario y/o contraseña incorrectos');
+          }
+        } else {
+          toast.error('El Usuario no existe');
+        } 
+
+        
+      }
+
   return (
     
     <>
+    <Toaster richColors position="top-right"/>
     <div className="container-login" style={{backdropFilter:"blur(10px)"}}>
         <div className="row d-flex justify-content-end align-content-center p-5">
             <div className="col-12 col-md-5 text-center p-5 bg-blur-login m-5">
                 <h1>Iniciar Sesión</h1>
-                <form onSubmit={handleSubmit((d) => console.log(d))} className="row">
+                <form onSubmit={handleSubmit(login)} className="row">
 
 
                 <div className="mb-3">
