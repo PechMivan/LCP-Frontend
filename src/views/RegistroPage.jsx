@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from 'sonner';
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function RegistroPage() {
+  const [ users , setUsers ] = useLocalStorage('users', []);
   const {
     register,
     handleSubmit,
@@ -13,23 +15,18 @@ export default function RegistroPage() {
   } = useForm();
 
   const Registrar = (e) => {
-    const users=JSON.parse(localStorage.getItem("users") || "[]");
-    if (  users.some(user => user.email === e.email )){
-      
+    if ( users.some(user => user.email === e.email )){
       toast.error('El usuario ya está registrado.');
     } else {
-      users.push(e);
-      localStorage.setItem("users", JSON.stringify(users));
+      setUsers([...users, e])
       toast.success('El usuario se ha registrado.');
       reset();
-    
     }
-   
   };
 
   return (
     <>
-     <Toaster richColors position="top-right"/>
+    <Toaster richColors position="top-right"/>
       <div className="container-signup">
         <div className="row d-flex justify-content-end align-content-center mx-5 ">
           <div className="col-12 col-lg-6 order-lg-2 p-5 bg-blur my-5">
