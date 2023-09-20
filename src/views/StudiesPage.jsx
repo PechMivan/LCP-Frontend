@@ -13,7 +13,6 @@ export default function StudiesPage() {
     const cat = await response.json();
     setCat1(cat.slice(0,cat.length/2));
     setCat2(cat.slice(cat.length/2));
-    console.log("Obtenemos Datos");
     setCategorias(cat);
   }
   useEffect(() => {

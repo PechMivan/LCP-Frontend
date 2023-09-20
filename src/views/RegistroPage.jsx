@@ -181,7 +181,6 @@ export default function RegistroPage() {
                       {errors.phoneNumber?.type === "matchPattern" && (
                         <small className="text-danger">Solo puede ingresar números</small>
                       )}
-
                 </div>
               </div>
 
