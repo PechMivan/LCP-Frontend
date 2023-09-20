@@ -19,7 +19,7 @@ export default function LoginPage() {
           toast.success('Sesión iniciada');
           setUser({...user});
           setTimeout(() => {
-            navigate("/")
+            navigate("/userprofile")
           }, 1000);
         } else {
           toast.error('Usuario y/o contraseña incorrectos');
