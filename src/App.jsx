@@ -9,13 +9,10 @@ import AgendarCita from "./views/AgendarCita";
 import StudyPage from "./views/StudyPage";
 import RegistroPage from "./views/RegistroPage";
 import LoginPage from "./views/LoginPage";
-<<<<<<< HEAD
 import ResultsPage from "./views/ResultsPage";
-=======
 import UserProfilePage from "./views/UserProfilePage";
 
 
->>>>>>> f738bd1aa1d85993d99b9d83323332203c752b11
 
 const App = () => {
   
@@ -32,11 +29,8 @@ const App = () => {
         <Route path="/estudio/:estudio" element={<StudyPage />} />
         <Route path="/registro" element={<RegistroPage />} />
         <Route path="/login" element={<LoginPage />} />
-<<<<<<< HEAD
         <Route path="/resultspage" element={<ResultsPage />} />
-=======
         <Route path="/userprofile" element={<UserProfilePage />} />
->>>>>>> f738bd1aa1d85993d99b9d83323332203c752b11
         
       </Routes>
       <FooterComponent/>
