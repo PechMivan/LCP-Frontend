@@ -7,9 +7,7 @@ const NavBar = () => {
   const [ user, setUser ] = useLocalStorage('user', null);
   const LogOut = () => {
     setUser(null);
-    setTimeout(() => {
-      navigate("/")
-    }, 1000);
+    navigate("/");
   }
   return (
     <nav className="bg-gradient navbar navbar-dark navbar-expand-md">
