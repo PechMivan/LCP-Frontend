@@ -351,13 +351,11 @@ ul {
     }
     }
 
-  .container-login{
-    background: url("/assets/img/login/lab.jpg");
-    background-size: 100%;
-    background-size: cover;
-    backdrop-filter: blur (100px);
-    
-    
+
+
+    .bg-login {
+      background-image: url("/assets/img/login/login-bgsm.jpg");
+      background-position: center center;
     }
 
      
@@ -408,4 +406,33 @@ ul {
         border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 20px;
       
+  }
+
+  #tituloresultados{
+    background: linear-gradient(#1f7dfe, #006dd2, #005ba6, #00497a, #123651);
+    padding: 40px;
+    width: 90%;
+    color: white;
+  }
+  
+  .container-results {
+    background-color: #D2EBFF;
+    padding: 60px;
+    width: 90%;
+    border-radius: 10px;
+  }
+
+  .container-download {
+    background-color: #60B2FE;
+    padding: 60px;
+    width: 90%;
+    border-radius: 10px;
+  }
+
+  .inputID {
+    border-radius: 5px;
+  }
+
+  .results-form-control {
+    width: 50%;
   }
