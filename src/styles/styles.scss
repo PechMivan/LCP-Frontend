@@ -351,13 +351,16 @@ ul {
     }
     }
 
-  .container-login{
-    background: url("/assets/img/login/lab.jpg");
-    background-size: 100%;
-    background-size: cover;
-    backdrop-filter: blur (100px);
-    
-    
+    .container-login{
+      background: url("/assets/img/login/lab.jpg");
+      background-size: 100%;
+      background-size: cover;
+      backdrop-filter: blur (100px);
+      }
+
+    .bg-login {
+      background-image: url("/assets/img/login/login-bgsm.jpg");
+      background-position: center center;
     }
 
      
@@ -390,6 +393,54 @@ ul {
     
     }
 
+  .bg-blur{
+      
+      
+        box-shadow: 0 4px 30px rgba(255, 255, 255, 0.712);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+      
+  }
+  .bg-blur-login{
+      
+        box-shadow: 0 4px 30px rgba(255, 255, 255, 0.753);
+        backdrop-filter: saturate(1%) ;
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+      
+  }
+
+  #tituloresultados{
+    background: linear-gradient(#1f7dfe, #006dd2, #005ba6, #00497a, #123651);
+    padding: 40px;
+    width: 90%;
+    color: white;
+  }
+  
+  .container-results {
+    background-color: #D2EBFF;
+    padding: 60px;
+    width: 90%;
+    border-radius: 10px;
+  }
+
+  .container-download {
+    background-color: #60B2FE;
+    padding: 60px;
+    width: 90%;
+    border-radius: 10px;
+  }
+
+  .inputID {
+    border-radius: 5px;
+  }
+
+  .results-form-control {
+    width: 50%;
+  }
 .bg-blur{
   background: rgba( 255, 255, 255, 0.15 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -405,4 +456,44 @@ ul {
   -webkit-backdrop-filter: blur( 4px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.tarjeta{
+  background: linear-gradient(to right, #1f7dfe, #006dd2, #005ba6, #00497a, #123651);
+  border-radius: 20px 20px 0 0;
+  color: white;
+}
+
+.tarjeta2 {
+  background: #EFF8FF;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow:
+  inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.headcard{
+  background: linear-gradient(to right, #1f7dfe, #006dd2, #005ba6, #00497a, #123651);
+  border-radius: 20px 20px 0 0;
+  color: white;
+}
+
+.footcard{
+  background: #2ec273;
+  border-radius: 0px 0px 20px 20px;
+  color: white;
+}
+
+.card {
+  background: white;
+  border-radius: 0px;
+  box-shadow:
+  inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.profilepic{
+  border-radius: 100px;
+  width:200px;
+  height:200px;
 }
