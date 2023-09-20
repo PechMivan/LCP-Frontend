@@ -4,7 +4,7 @@ import { Toaster, toast } from 'sonner';
 import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function RegistroPage() {
-  const [ users , setUsers ] = useLocalStorage('users', []);
+  const [users, setUsers] = useLocalStorage('users', []);
   const {
     register,
     handleSubmit,
@@ -15,7 +15,7 @@ export default function RegistroPage() {
   } = useForm();
 
   const Registrar = (e) => {
-    if ( users.some(user => user.email === e.email )){
+    if (users.some(user => user.email === e.email)) {
       toast.error('El usuario ya está registrado.');
     } else {
       setUsers([...users, e])
@@ -26,7 +26,7 @@ export default function RegistroPage() {
 
   return (
     <>
-    <Toaster richColors position="top-right"/>
+      <Toaster richColors position="top-right" />
       <div className="container-signup">
         <div className="row d-flex justify-content-end align-content-center mx-5 ">
           <div className="col-12 col-lg-6 order-lg-2 p-5 bg-blur my-5">
@@ -50,16 +50,16 @@ export default function RegistroPage() {
                     })}
                   />
                   {errors.name?.type === "required" && (
-                      <small className="text-danger">Nombre es obligatorio</small>
-                    )}
+                    <small className="text-danger">Nombre es obligatorio</small>
+                  )}
 
-                    {errors.name?.type === "minLength" && (
-                      <small className="text-danger">Nombre mínimo 2 caracteres</small>
-                    )}
+                  {errors.name?.type === "minLength" && (
+                    <small className="text-danger">Nombre mínimo 2 caracteres</small>
+                  )}
 
-                    {errors.name?.type === "matchPattern" && (
-                      <small className="text-danger">Solo puede ingresar letras</small>
-                    )}
+                  {errors.name?.type === "matchPattern" && (
+                    <small className="text-danger">Solo puede ingresar letras</small>
+                  )}
                 </div>
               </div>
 
@@ -81,17 +81,17 @@ export default function RegistroPage() {
                       },
                     })}
                   />
-                    {errors.lastNameP?.type === "required" && (
-                      <small className="text-danger">Apellido Paterno es obligatorio</small>
-                    )}
+                  {errors.lastNameP?.type === "required" && (
+                    <small className="text-danger">Apellido Paterno es obligatorio</small>
+                  )}
 
-                    {errors.lastNameP?.type === "minLength" && (
-                      <small className="text-danger">Apellido Paterno minimo 2 caracteres</small>
-                    )}
+                  {errors.lastNameP?.type === "minLength" && (
+                    <small className="text-danger">Apellido Paterno minimo 2 caracteres</small>
+                  )}
 
-                    {errors.lastNameP?.type === "matchPattern" && (
-                      <small className="text-danger">Solo puede ingresar letras</small>
-                    )}
+                  {errors.lastNameP?.type === "matchPattern" && (
+                    <small className="text-danger">Solo puede ingresar letras</small>
+                  )}
                 </div>
               </div>
 
@@ -106,24 +106,24 @@ export default function RegistroPage() {
                     id="lastNameM"
                     name="lastNameM"
                     {...register("lastNameM", {
-                        required: true,
-                        validate: {
-                          minLength: (v) => v.length >= 2,
-                          matchPattern: (v) => /^[a-zA-Z]+$/.test(v),
-                        },
-                      })}
-                    />
-                      {errors.lastNameM?.type === "required" && (
-                        <small className="text-danger">Apellido Materno es obligatorio</small>
-                      )}
-  
-                      {errors.lastNameM?.type === "minLength" && (
-                        <small className="text-danger">Apellido Materno minimo 2 caracteres</small>
-                      )}
-  
-                      {errors.lastNameM?.type === "matchPattern" && (
-                        <small className="text-danger">Solo puede ingresar letras</small>
-                      )}
+                      required: true,
+                      validate: {
+                        minLength: (v) => v.length >= 2,
+                        matchPattern: (v) => /^[a-zA-Z]+$/.test(v),
+                      },
+                    })}
+                  />
+                  {errors.lastNameM?.type === "required" && (
+                    <small className="text-danger">Apellido Materno es obligatorio</small>
+                  )}
+
+                  {errors.lastNameM?.type === "minLength" && (
+                    <small className="text-danger">Apellido Materno minimo 2 caracteres</small>
+                  )}
+
+                  {errors.lastNameM?.type === "matchPattern" && (
+                    <small className="text-danger">Solo puede ingresar letras</small>
+                  )}
                 </div>
               </div>
 
@@ -142,12 +142,12 @@ export default function RegistroPage() {
                     name="birthdate"
                     max={new Date().toJSON().slice(0, 10)}
                     {...register("birthdate", {
-                        required: true,
+                      required: true,
                     })}
                   />
-                    {errors.birthdate?.type === "required" && (
+                  {errors.birthdate?.type === "required" && (
                     <small className="text-danger">Fecha de nacimiento es obligatorio</small>
-                    )}
+                  )}
                 </div>
               </div>
 
@@ -163,24 +163,24 @@ export default function RegistroPage() {
                     name="phoneNumber"
                     maxLength={10}
                     {...register("phoneNumber", {
-                        required: true,
-                        validate: {
-                            minLength: (v) => v.length == 10,
-                            matchPattern: (v) => /^\d+$/.test(v),
-                          },
+                      required: true,
+                      validate: {
+                        minLength: (v) => v.length == 10,
+                        matchPattern: (v) => /^\d+$/.test(v),
+                      },
                     })}
                   />
-                      {errors.phoneNumber?.type === "required" && (
-                        <small className="text-danger">El número de teléfono es requerido.</small>
-                      )}
-  
-                      {errors.phoneNumber?.type === "minLength" && (
-                        <small className="text-danger">El mínimo de digitos es 10</small>
-                      )}
-  
-                      {errors.phoneNumber?.type === "matchPattern" && (
-                        <small className="text-danger">Solo puede ingresar números</small>
-                      )}
+                  {errors.phoneNumber?.type === "required" && (
+                    <small className="text-danger">El número de teléfono es requerido.</small>
+                  )}
+
+                  {errors.phoneNumber?.type === "minLength" && (
+                    <small className="text-danger">El mínimo de digitos es 10</small>
+                  )}
+
+                  {errors.phoneNumber?.type === "matchPattern" && (
+                    <small className="text-danger">Solo puede ingresar números</small>
+                  )}
 
                 </div>
               </div>
@@ -196,21 +196,21 @@ export default function RegistroPage() {
                     id="email"
                     name="email"
                     {...register("email", {
-                        required: "Correo electrónico es obligatorio",
-                        validate: {
-                          maxLength: (v) =>
-                            v.length <= 100 || "El correo electrónico no puede exceder los 100 caracteres",
-                          matchPattern: (v) =>
-                            /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-                            "El correo electrónico debe ser una dirección válida",
-                        },
-                      })}
-                      
-                    
+                      required: "Correo electrónico es obligatorio",
+                      validate: {
+                        maxLength: (v) =>
+                          v.length <= 100 || "El correo electrónico no puede exceder los 100 caracteres",
+                        matchPattern: (v) =>
+                          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+                          "El correo electrónico debe ser una dirección válida",
+                      },
+                    })}
+
+
                   />
-                   {errors.email?.message && (
-                        <small className="text-danger">{errors.email.message}</small>
-                         )}
+                  {errors.email?.message && (
+                    <small className="text-danger">{errors.email.message}</small>
+                  )}
                 </div>
               </div>
 
@@ -225,19 +225,19 @@ export default function RegistroPage() {
                     id="password"
                     name="password"
                     {...register("password", {
-                        required: true,
-                        validate: {
-                            minLength: (v) => v.length >= 8,
-                          },
+                      required: true,
+                      validate: {
+                        minLength: (v) => v.length >= 8,
+                      },
                     })}
                   />
-                      {errors.password?.type === "required" && (
-                        <small className="text-danger">La contraseña es requerida.</small>
-                      )}
-  
-                      {errors.password?.type === "minLength" && (
-                        <small className="text-danger">El mínimo de caracteres es de 8</small>
-                      )}
+                  {errors.password?.type === "required" && (
+                    <small className="text-danger">La contraseña es requerida.</small>
+                  )}
+
+                  {errors.password?.type === "minLength" && (
+                    <small className="text-danger">El mínimo de caracteres es de 8</small>
+                  )}
                 </div>
               </div>
 
@@ -255,25 +255,18 @@ export default function RegistroPage() {
                     id="confirmPassword"
                     name="confirmPassword"
                     {...register("confirmPassword", {
-                        required: true,
-                        validate: (string) => {
-                            if (watch('password') != string) {
-                              return "Your passwords do no match";
-                            }
+                      required: true,
+                      validate: (string) => {
+                        if (watch('password') != string) {
+                          return "Your passwords do no match";
                         }
+                      }
                     })}
                   />
                   {watch("confirmPassword") !== watch("password") &&
-      getValues("confirmPassword") ? (
-        <small className="text-danger">Las contraseñas no coinciden</small>
-      ) : null}
-                      {/* {errors.confirmPassword?.type === "required" && (
-                        <small className="text-danger">Se requiere confirmar la contraseña</small>
-                      )}
-
-                      {errors.confirmPassword?.type === "validate" && (
-                        <small className="text-danger">Las contraseñas no coinciden</small>
-                      )} */}
+                    getValues("confirmPassword") ? (
+                    <small className="text-danger">Las contraseñas no coinciden</small>
+                  ) : null}
                 </div>
               </div>
 
