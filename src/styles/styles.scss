@@ -351,7 +351,12 @@ ul {
     }
     }
 
-
+    .container-login{
+      background: url("/assets/img/login/lab.jpg");
+      background-size: 100%;
+      background-size: cover;
+      backdrop-filter: blur (100px);
+      }
 
     .bg-login {
       background-image: url("/assets/img/login/login-bgsm.jpg");
@@ -388,7 +393,6 @@ ul {
     
     }
 
-<<<<<<< HEAD
   .bg-blur{
       
       
@@ -437,7 +441,6 @@ ul {
   .results-form-control {
     width: 50%;
   }
-=======
 .bg-blur{
   background: rgba( 255, 255, 255, 0.15 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -494,4 +497,3 @@ ul {
   width:200px;
   height:200px;
 }
->>>>>>> f738bd1aa1d85993d99b9d83323332203c752b11
