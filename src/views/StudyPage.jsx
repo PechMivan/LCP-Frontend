@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import ButtonCita from "../components/ButtonCita";
 
 const testArray = [
   {
@@ -76,6 +77,7 @@ export default function StudyPage() {
                   </li>
                   <li>Evitar tomar alcohol o cualquier sustancia similar.</li>
                 </ul>
+                <ButtonCita icon estudio={estudio}/>
               </div>
             </div>
           </div>
@@ -83,12 +85,12 @@ export default function StudyPage() {
             <h3 className="text-center">Otros servicios</h3>
             {testArray.map((estudio, key) => {
               return (
-                <div class="card my-3 content-info">
-                  <img src={estudio.img} class="card-img-top" alt="..." />
-                  <div class="card-body">
-                    <h5 class="card-title">{estudio.nombre}</h5>
-                    <p class="card-text">{estudio.descripcion}</p>
-                    <a href="#" class="btn btn-primary">
+                <div className="card my-3 content-info" key={key}>
+                  <img src={estudio.img} className="card-img-top" alt="..." />
+                  <div className="card-body">
+                    <h5 className="card-title">{estudio.nombre}</h5>
+                    <p className="card-text">{estudio.descripcion}</p>
+                    <a href="#" className="btn btn-primary">
                       Ver
                     </a>
                   </div>

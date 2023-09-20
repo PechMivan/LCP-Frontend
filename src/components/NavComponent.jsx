@@ -1,6 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '/assets/img/Logo.svg';
-export default function NavComponent() {
+import { useLocalStorage } from "@uidotdev/usehooks";
+
+const NavBar = () => {
+  const navigate = useNavigate();
+  const [ user, setUser ] = useLocalStorage('user', null);
+  const LogOut = () => {
+    setUser(null);
+    navigate("/");
+  }
   return (
     <nav className="bg-gradient navbar navbar-dark navbar-expand-md">
     <div className="container-fluid">
@@ -23,20 +31,22 @@ export default function NavComponent() {
           <li className="nav-item">
             <Link className="nav-link" to="/contacto">Contáctanos</Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/registro">Registro</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/login">Inicio de sesión</Link>
-          </li>
+          { !user &&
+            <li className="nav-item" id="login">
+              <Link className="nav-link" to="/login">Inicio de sesión</Link>
+            </li>
+          }
+          { user &&
+            <li className="nav-item" id="logout">
+              <button className="nav-link" onClick={LogOut}>
+                Cerrar sesión</button>
+            </li>
+          }
         </ul>
-        
-   {/*      <form className="d-flex" role="search">
-          <input className="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"/>
-          <button className="btn btn-outline-success" type="submit">Buscar</button>
-        </form> */}
       </div>
     </div>
   </nav>
   )
 }
+
+export default NavBar
