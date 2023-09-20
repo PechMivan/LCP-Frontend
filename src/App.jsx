@@ -9,19 +9,16 @@ import AgendarCita from "./views/AgendarCita";
 import StudyPage from "./views/StudyPage";
 import RegistroPage from "./views/RegistroPage";
 import LoginPage from "./views/LoginPage";
+import UserProfilePage from "./views/UserProfilePage";
 
 
 
 const App = () => {
-  // Verificar si el usuario ha iniciado sesión (por ejemplo, si hay datos de usuario en el localStorage)
-  const userLoggedIn = localStorage.getItem("userData") !== null;
+  
   return (
     <>
-      {userLoggedIn ? (
-        <NavComponentUser isLogged={true} />
-      ) : (
-        <NavComponent isLogged={false} />
-      )}
+    
+      <NavComponent/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/nosotros" element={<AboutPage />} />
@@ -31,6 +28,7 @@ const App = () => {
         <Route path="/estudio/:estudio" element={<StudyPage />} />
         <Route path="/registro" element={<RegistroPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/userprofile" element={<UserProfilePage />} />
         
       </Routes>
       <FooterComponent/>

@@ -406,3 +406,43 @@ ul {
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
+
+.tarjeta{
+  background: linear-gradient(to right, #1f7dfe, #006dd2, #005ba6, #00497a, #123651);
+  border-radius: 20px 20px 0 0;
+  color: white;
+}
+
+.tarjeta2 {
+  background: #EFF8FF;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow:
+  inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.headcard{
+  background: linear-gradient(to right, #1f7dfe, #006dd2, #005ba6, #00497a, #123651);
+  border-radius: 20px 20px 0 0;
+  color: white;
+}
+
+.footcard{
+  background: #2ec273;
+  border-radius: 0px 0px 20px 20px;
+  color: white;
+}
+
+.card {
+  background: white;
+  border-radius: 0px;
+  box-shadow:
+  inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.profilepic{
+  border-radius: 100px;
+  width:200px;
+  height:200px;
+}
