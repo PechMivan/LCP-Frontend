@@ -35,7 +35,7 @@ const App = () => {
         <Route path="/password-reset" element={<SetNewPassword />} />
         <Route path="/resultspage" element={<ResultsPage />} />
         <Route path="/userprofile" element={<UserProfilePage />} />
-        <Route path="/errorpage" element={<ErrorPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <FooterComponent/>
     </>
