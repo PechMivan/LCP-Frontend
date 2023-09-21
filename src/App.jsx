@@ -13,7 +13,7 @@ import PasswordRecovery from "./views/PasswordRecovery";
 import SetNewPassword from "./views/SetNewPassword";
 import ResultsPage from "./views/ResultsPage";
 import UserProfilePage from "./views/UserProfilePage";
-
+import ErrorPage from "./views/ErrorPage";
 
 
 const App = () => {
@@ -35,7 +35,7 @@ const App = () => {
         <Route path="/password-reset" element={<SetNewPassword />} />
         <Route path="/resultspage" element={<ResultsPage />} />
         <Route path="/userprofile" element={<UserProfilePage />} />
-        
+        <Route path="/errorpage" element={<ErrorPage />} />
       </Routes>
       <FooterComponent/>
     </>
