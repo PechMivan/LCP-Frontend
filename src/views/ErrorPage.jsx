@@ -5,11 +5,11 @@ export default function ErrorPage() {
   return (
     <div>
       <div className="d-flex justify-content-center align-items-center col-md-12 container-error404">            
-        <div class="row text-center ">
-          <div class="col-md-6 col-sm-12 col-lg-6 ">
+        <div className="row text-center ">
+          <div className="col-md-6 col-sm-12 col-lg-6 ">
             <p className="error404">404</p>
             <h3 className="error-Text mb-5">PÁGINA NO ENCONTRADA</h3>
-              <div class="d-grid gap-3 mx-auto">
+              <div className="d-grid gap-3 mx-auto">
                 <Link to="/">
                   <button type="submit" className="btn btn-green">
                     Volver al inicio
@@ -17,7 +17,7 @@ export default function ErrorPage() {
                 </Link>
               </div>    
           </div>
-            <div class="col-md-6 col-sm-12 col-lg-6 mx-auto">
+            <div className="col-md-6 col-sm-12 col-lg-6 mx-auto">
               <img className="img-error" src={ErrorPageImg} />    
             </div>    
         </div>               
