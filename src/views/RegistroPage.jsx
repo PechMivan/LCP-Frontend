@@ -45,7 +45,7 @@ export default function RegistroPage() {
                       required: true,
                       validate: {
                         minLength: (v) => v.length >= 2,
-                        matchPattern: (v) => /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g.test(v),
+                        matchPattern: (v) => /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/g.test(v),
                       },
                     })}
                   />
@@ -77,7 +77,7 @@ export default function RegistroPage() {
                       required: true,
                       validate: {
                         minLength: (v) => v.length >= 2,
-                        matchPattern: (v) => /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g.test(v),
+                        matchPattern: (v) => /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/g.test(v),
                       },
                     })}
                   />
@@ -109,7 +109,7 @@ export default function RegistroPage() {
                       required: true,
                       validate: {
                         minLength: (v) => v.length >= 2,
-                        matchPattern: (v) => /^[a-zA-Z]+$/.test(v),
+                        matchPattern: (v) => /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/.test(v),
                       },
                     })}
                   />

@@ -8,7 +8,7 @@ export default function UserProfilePage() {
         
         <div className="row col-12 d-flex justify-content-center align-items-center m-0">
         <div className="col-12 col-lg-6 d-flex justify-content-center justify-content-lg-end mb-2">
-            <img className='profilepic' src="https://plus.unsplash.com/premium_photo-1677178628425-84a64dc416b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" alt="" />
+            <img className='profilepic' src="/assets/img/resultados/ProfileUser.png" alt="" />
         </div>
         <div className="col-12 col-lg-6 text-center text-lg-start">
             <h3>Nombre: {user.name} {user.lastNameP} {user.lastNameM}</h3>
