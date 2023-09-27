@@ -71,36 +71,36 @@ export default function ContactPage() {
                 <div className="row">
                   <div className="col-md-6">
                     <div className="md-form mb-0">
-                      <label htmlFor="name"></label>
-                      <input type="text"  title="Ingrese su nombre" required id="name" name="name" className="form-control" placeholder="Nombre" onChange={handleNombreChange} value={nombre}/>
+                      <label htmlFor="name"> Nombre </label>
+                      <input type="text"  title="Ingrese su nombre" required id="name" name="name" className="form-control" onChange={handleNombreChange} value={nombre}/>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="md-form mb-0">
-                      <label htmlFor="email"></label>
-                      <input type="email" required id="email" name="email" className="form-control" placeholder="E-mail" onChange={event => setmail(event.target.value)} value={email}/>
+                      <label htmlFor="email"> Email </label>
+                      <input type="email" required id="email" name="email" className="form-control" onChange={event => setmail(event.target.value)} value={email}/>
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="md-form mb-0">
-                      <label htmlFor="numero"></label>
-                      <input type="tel"pattern="[0-9]*" maxLength="15" minLength="10" required id="numero" name="numero" className="form-control" placeholder="Número" onChange={handleNumeroChange} value={numero}/>
+                      <label htmlFor="numero">Número </label>
+                      <input type="tel"pattern="[0-9]*" maxLength="15" minLength="10" required id="numero" name="numero" className="form-control" onChange={handleNumeroChange} value={numero}/>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="md-form mb-0">
-                      <label htmlFor="subject"></label>
-                      <input type="text" required id="subject" name="subject" className="form-control" placeholder="Asunto" onChange={event => setAsunto(event.target.value)} value={asunto}/>
+                      <label htmlFor="subject"> Asunto </label>
+                      <input type="text" required id="subject" name="subject" className="form-control" onChange={event => setAsunto(event.target.value)} value={asunto}/>
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-12">
                     <div className="md-form">
-                      <label htmlFor="message"></label>
-                      <textarea type="text" required id="message" name="message" rows="2" className="form-control md-textarea" placeholder="Mensaje" onChange={event => setMensaje(event.target.value)} value={mensaje}></textarea>
+                      <label htmlFor="message"> Mensaje </label>
+                      <textarea type="text" required id="message" name="message" rows="2" className="form-control md-textarea"  onChange={event => setMensaje(event.target.value)} value={mensaje}></textarea>
                     </div>
                   </div>
                 </div>

@@ -32,8 +32,19 @@ const NavBar = () => {
             <Link className="nav-link" to="/contacto">Contáctanos</Link>
           </li>
           { !user &&
+            <li className="nav-item">
+              <Link className="nav-link" to="/resultspage">Resultados</Link>
+            </li>
+          }
+          { !user &&
             <li className="nav-item" id="login">
               <Link className="nav-link" to="/login">Inicio de sesión</Link>
+            </li>
+          }
+          {
+            user &&
+            <li className="nav-item">
+              <Link className="nav-link" to="/userprofile">Perfil</Link>
             </li>
           }
           { user &&
@@ -42,6 +53,7 @@ const NavBar = () => {
                 Cerrar sesión</button>
             </li>
           }
+          
         </ul>
       </div>
     </div>

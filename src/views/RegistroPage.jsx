@@ -151,7 +151,8 @@ export default function RegistroPage() {
                 </div>
               </div>
 
-              <div className="mb-3">
+            
+              <div className="mb-3 col-12 col-lg-6" >
                 <label htmlFor="phoneNumber" className="col-12 col-form-label">
                   Teléfono Celular:
                 </label>
@@ -181,9 +182,22 @@ export default function RegistroPage() {
                   {errors.phoneNumber?.type === "matchPattern" && (
                     <small className="text-danger">Solo puede ingresar números</small>
                   )}
-
                 </div>
               </div>
+          
+              <div className="mb-3 col-12 col-lg-6">
+              <label htmlFor="sexo" className="col-12 col-form-label">
+                Sexo:
+              </label>
+              <div className="col-12">
+                <select className="form-select" id="sexo" name="sexo" required>
+                  <option value="">Selecciona una opción</option>
+                  <option value="Hombre">Femenino</option>
+                  <option value="Mujer">Masculino</option>
+                </select>
+              </div>
+            </div>
+            
 
               <div className="mb-3">
                 <label htmlFor="email" className="col-12 col-form-label">

@@ -56,8 +56,8 @@ export default function AccordionEstudios({index, categoria, getData, usuario}) 
                         <button className={`btn btn-danger ${usuario === "admin" ? "d-block" :"d-none"}`} onClick={() => eliminar (estudio.nombre)}>
                           <i className="bi bi-trash"></i>
                         </button>
-                        <Link className={`btn btn-info ${usuario === "admin" ? "d-none" :"d-block"}`} to={`/estudio/${estudio.nombre}`}>Ver</Link>
-                
+                        <Link id='Ver' className={`btn btn-info mb-1 ${usuario === "admin" ? "d-none" :"d-block"}`} to={`/estudio/${estudio.nombre}`}>Ver</Link>
+                      <Link id='ButtonCitaEstudio' className={`btn btn-info mb-1 ${usuario === "admin" ? "d-none" :"d-block"}`} to={`/agendar-cita/${estudio.nombre}`}>Agendar Cita</Link>
                       </td>
                     </tr>
                   ))

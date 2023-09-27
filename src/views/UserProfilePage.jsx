@@ -8,7 +8,7 @@ export default function UserProfilePage() {
         
         <div className="row col-12 d-flex justify-content-center align-items-center m-0">
         <div className="col-12 col-lg-6 d-flex justify-content-center justify-content-lg-end mb-2">
-            <img className='profilepic' src="/assets/img/resultados/ProfileUser.png" alt="" />
+            <img className='profilepic' src="/assets/img/resultados/ProfileUser2.png" alt="" />
         </div>
         <div className="col-12 col-lg-6 text-center text-lg-start">
             <h3>Nombre: {user.name} {user.lastNameP} {user.lastNameM}</h3>
@@ -19,15 +19,16 @@ export default function UserProfilePage() {
        
 
     </div>
-    <div className="container my-5 px-0 tarjeta2">
+    <div className="container my-5 px-0 tarjeta2 py-1">
         <div className="d-flex justify-content-center align-items-center tarjeta">
-          <h3>MIS RESULTADOS</h3>
+          <h3>MIS CITAS</h3>
         </div>
-        <div className="m-4">
+        <div className='mx-4'>
           < StudyCard />
-          <div className="row  mx-2">
-       
-          </div>
+          < StudyCard />
+          < StudyCard />
+          < StudyCard />
+          
         </div>
       </div>
     </>
