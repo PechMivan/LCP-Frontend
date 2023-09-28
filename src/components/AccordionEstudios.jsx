@@ -81,7 +81,7 @@ export default function AccordionEstudios({
                           }`}
                           onClick={() => eliminar(estudio.nombre)}
                         >
-                          <i className="bi bi-trash"></i> Eliminar
+                          <i className="bi bi-eye-slash-fill"></i> Deshabilitar
                         </button>
 
                         {/* ///// BOTÓN AGENDAR CITA ///// */}
