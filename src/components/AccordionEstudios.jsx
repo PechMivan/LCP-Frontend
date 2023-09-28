@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Toaster, toast } from "sonner";
 import CreateComponent from "../components/CreateComponent";
 import IndicationsComponent from "./IndicationsComponent";
+import ButtonCita from '../components/ButtonCita';
 
 export default function AccordionEstudios({
   index,
@@ -82,12 +83,17 @@ export default function AccordionEstudios({
                         >
                           <i className="bi bi-trash"></i> Eliminar
                         </button>
+
+                        {/* ///// BOTÓN AGENDAR CITA ///// */}
+                        <Link className={`btn btn-success2 mb-1 ${usuario === "admin" ? "d-none" :"d-block"}`} to={`/agendar-cita/${estudio.nombre}`}>Agendar Cita</Link>
                         
+
                         {/* ///// COMPONENTE INDICACIONES ///// */}
                         <IndicationsComponent
                           estudio={estudio.nombre}
-                          index={key}
+                          index={index}
                           usuario={usuario}
+                          descripcion={estudio.precio}
                         />
                       </td>
                     </tr>

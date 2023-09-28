@@ -40,6 +40,7 @@ export default function AgendarCita() {
       setValue("name", user.name);
       setValue("lastNameP", user.lastNameP);
       setValue("lastNameM", user.lastNameM);
+      setValue("sex", user.sex);
       setValue("birthdate", user.birthdate);
       setValue("phoneNumber", user.phoneNumber);
       setValue("email", user.email);
@@ -47,6 +48,7 @@ export default function AgendarCita() {
       setValue("name", "");
       setValue("lastNameP", "");
       setValue("lastNameM", "");
+      setValue("sex", "");
       setValue("birthdate", "");
       setValue("phoneNumber", "");
       setValue("email", "");
@@ -177,8 +179,8 @@ export default function AgendarCita() {
                   )}
                 </div>
               </div>
-              <div className="mb-3 col-12 col-md-6">
-                <label htmlFor="name" className="col-12 d-block col-form-label">
+
+              <label htmlFor="name" className="col-12 d-block col-form-label">
                   Nombre(s):
                 </label>
                 <div className="col-sm-12">
@@ -211,7 +213,8 @@ export default function AgendarCita() {
                       Solo puede ingresar letras
                     </small>
                   )}
-                </div>
+
+          
               </div>
               <div className="mb-3 col-12 col-md-6">
                 <label htmlFor="lastNameP" className="col-12 col-form-label">
@@ -289,6 +292,20 @@ export default function AgendarCita() {
                   )}
                 </div>
               </div>
+
+              <div className="mb-3 col-12 col-lg-6">
+              <label htmlFor="sexo" className="col-12 col-form-label">
+                Sexo:
+              </label>
+              <div className="col-12">
+                <select className="form-select" id="sexo" name="sexo" required>
+                  <option value="">Selecciona una opción</option>
+                  <option value="Hombre">Femenino</option>
+                  <option value="Mujer">Masculino</option>
+                </select>
+              </div>
+              </div>
+
               <div className="mb-3 col-12 col-md-6">
                 <label htmlFor="birthdate" className="col-12 col-form-label">
                   Fecha de nacimiento:

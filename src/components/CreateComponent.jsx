@@ -12,7 +12,7 @@ export default function CreateComponent({ categoria, getData, usuario, index}) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ nombre: estudio, precio: "100" })
+      body: JSON.stringify({ nombre: estudio, precio: waitTime })
     });
 
     setEstudio("");
@@ -20,6 +20,7 @@ export default function CreateComponent({ categoria, getData, usuario, index}) {
     setWaitTime("");
     getData();
     toast.success('El nuevo estudio se ha creado.');
+    
   }
 
     return(
@@ -30,7 +31,7 @@ export default function CreateComponent({ categoria, getData, usuario, index}) {
       </button>
 
       <div className="modal fade" id={`exampleModal${index}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
 
             <div className="modal-header">

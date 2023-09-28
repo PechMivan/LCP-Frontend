@@ -14,6 +14,7 @@ export default function StudiesPage() {
     setCat1(cat.slice(0,cat.length/2));
     setCat2(cat.slice(cat.length/2));
     setCategorias(cat);
+    console.log(cat);
   }
   useEffect(() => {
 

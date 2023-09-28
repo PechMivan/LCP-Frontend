@@ -159,7 +159,7 @@
 }
 
 .btn-green {
-  font-size: 0.9rem;
+  font-size: 5px;
   transition: all;
   border: 0;
   color: white;
@@ -182,6 +182,33 @@
 .btn-green:hover {
   background-color: #238b5d; 
 }
+
+
+.btn-success2 {
+  color: #fff;
+  background-color: #2ec273;
+  border-color: #2ec273;
+  width:8rem;
+}
+
+.btn-success2:hover {
+  background-color: #238b5d;
+  color: #fff; 
+}
+
+.btn-info2 {
+  color: #fff;
+  background-color: #3ac6e9;
+  border-color: #3ac6e9;
+  width:8rem;
+}
+
+.btn-info2:hover {
+  background-color: #329fbb;
+  color: #fff; 
+}
+
+
 
 .section-title {
   font-size: 1.3rem;
