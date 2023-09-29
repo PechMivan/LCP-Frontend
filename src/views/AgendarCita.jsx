@@ -12,6 +12,24 @@ export default function AgendarCita() {
   const [user] = useLocalStorage("user", null);
   const [isChecked, setIsChecked] = useState(false);
   const [estudios, setEstudios] = useState([]);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    getValue,
+    setValue,
+  } = useForm();
+
+  const watchMysel = watch("mysel")
+
+  useEffect(() => {
+    const filtrarSexo= () => {
+      console.log('mysel value', watchMysel);
+    }
+    filtrarSexo()
+  }, [watchMysel]);
   
   const multiselectRef = useRef();
 
@@ -72,24 +90,15 @@ export default function AgendarCita() {
     setPhonenumber("");
     setTime("");
     getData();
-    toast.success('El nuevo estudio se ha creado.');
+    toast.success('La cita se ha agendado exitosamente.');
   }
 
-
-  
   useEffect(() => {
 
     getData();
 
   }, [])
 
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm();
   useEffect(() => {
     if (isChecked) {
       setValue("name", user.name);
@@ -310,19 +319,20 @@ export default function AgendarCita() {
                 </div>
               </div>
 
-              <div className="mb-3 col-12 col-lg-6">
-              <label htmlFor="sex" className="col-12 col-form-label">
-                Sexo:
-              </label>
-              <div className="col-12">
-                <select className="form-select" id="sex" name="sex"  {...register("sex", {
-                      required: true,
-                      })}>
-                  <option value="">Selecciona una opción</option>
-                  <option value="Masculino">Masculino</option>
-                  <option value="Femenino">Femenino</option>
-                </select>
-              </div>
+              <div className="mb-3 col-12 col-md-6">
+                      <label className="col-12 col-form-label">Sexo</label>
+                        <select
+                          className="form-select"
+                          defaultValue="0"
+                          {...register("mysel", { validate: (value) => value !== "0" })}
+                        >
+                          <option value="0">Selecciona una opción</option>
+                          <option value="Masculino">Masculino</option>
+                          <option value="Femenino">Femenino</option>
+                        </select>
+                        {errors?.mysel?.type === "validate" && (
+                          <p className="error-message">Este campo es obligatorio</p>
+                        )}
               </div>
 
               <div className="mb-3 col-12 col-md-6">

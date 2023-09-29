@@ -1,4 +1,4 @@
-export default function IndicationsComponent({ estudio, index, usuario, indicatons, tiempoEspera }) {
+export default function IndicationsComponent({ estudio, index, usuario, indications, tiempo }) {
   return (
     <>
       <button
@@ -10,8 +10,8 @@ export default function IndicationsComponent({ estudio, index, usuario, indicato
           usuario === "admin" ? "d-none" : "d-block"
         }`}
       >
-        <i className="bi bi-info me-1"></i>
-         Ver 
+        <i class="bi bi-eye-fill"> Ver</i>
+         
       </button>
 
       <div
@@ -39,22 +39,16 @@ export default function IndicationsComponent({ estudio, index, usuario, indicato
               <div className="row content">
                 <div className="row d-flex justify-content-around">
                   <div className="col-6">
-                    <h3>Indicaciones</h3>
+                    
                   </div>
                   <div className="col-6">
-                    <h3 className="bi bi-clock-history text-center">
-                      {" "}
-                      {estudio}
-                    </h3>
+                   
                   </div>
                 </div>
                 <div className="row d-flex justify-content-around m-0 p-4">
-                  <ul className="my-3">
-                    <li>
-                      {estudio}
-                    </li>
-                    
-                  </ul>
+                
+                 <h4 className="bi bi-clock-history text-center"> Tiempo de espera:</h4><p>{tiempo}</p> 
+                 <h4>Indicaciones:</h4><p>{indications}</p>
                 </div>
               </div>
             </div>

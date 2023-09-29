@@ -90,11 +90,11 @@ export default function AccordionEstudios({
 
                         {/* ///// COMPONENTE INDICACIONES ///// */}
                         <IndicationsComponent
-                          estudio={estudio.nombre}
-                          index={index}
+                          estudio={estudio.name}
+                          index={estudio.studyId}
                           usuario={usuario}
                           indications={estudio.indications}
-                          tiempoEspera={estudio.WaitTime}
+                          tiempo={estudio.waitTime}
                         />
                       </td>
                     </tr>

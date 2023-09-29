@@ -3,20 +3,29 @@ import { Toaster, toast } from 'sonner';
 
 export default function CreateComponent({ categoria, getData, usuario, index}) {
   const [estudio, setEstudio] = useState("");
-  const [descripcion, setDescripcion] = useState("");
+  const [indications, setIndications] = useState("");
   const [waitTime, setWaitTime] = useState("");
 
   const crear = async () => {
-    await fetch(`https://apilcp.onrender.com/api/estudios/${encodeURI(categoria.especialidad)}`, {
+    await fetch(`https://lcp-backend.onrender.com/api/v1/studies`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ nombre: estudio, precio: waitTime })
+      body: JSON.stringify( 
+        {
+          name: estudio,
+          indications: indications,
+          waitTime: waitTime,
+          category: {
+              categoryId: 1
+          }
+      
+       })
     });
 
     setEstudio("");
-    setDescripcion("");
+    setIndications("");
     setWaitTime("");
     getData();
     toast.success('El nuevo estudio se ha creado.');
@@ -26,8 +35,8 @@ export default function CreateComponent({ categoria, getData, usuario, index}) {
     return(
         <>
         <button type="button" data-bs-toggle="modal" data-bs-target= {`#exampleModal${index}`} data-bs-whatever="@getbootstrap" className={`btn btn-primary ${usuario === "admin" ? "d-block" :"d-none"}`}>
-        <i className="bi bi-plus-circle me-1"></i>
-        Crear estudio
+        <i className="bi bi-plus-circle me-1"> Crear estudio</i>
+        
       </button>
 
       <div className="modal fade" id={`exampleModal${index}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -51,7 +60,7 @@ export default function CreateComponent({ categoria, getData, usuario, index}) {
 
                 <div className="mb-3">
                   <label htmlFor={`message-text${index}`} className="col-form-label">Indicaciones:</label>
-                  <textarea className="form-control" id= {`message-text${index}`} onChange={event => setDescripcion(event.target.value)} value={descripcion}></textarea>
+                  <textarea className="form-control" id= {`message-text${index}`} onChange={event => setIndications(event.target.value)} value={indications}></textarea>
                 </div>
 
                 <div className="mb-3">
@@ -66,7 +75,7 @@ export default function CreateComponent({ categoria, getData, usuario, index}) {
 
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => crear (categoria.especialidad, estudio, descripcion)}>Guardar</button>
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={() => crear (categoria.especialidad, estudio, indications, waitTime)}>Guardar</button>
             </div>
 
           </div>

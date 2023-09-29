@@ -208,6 +208,23 @@
   color: #fff; 
 }
 
+.transparent-button {
+  background-color: transparent; /* Fondo transparente */
+  border: 2px solid transparent; /* Borde transparente */
+  color: white; /* Color de texto heredado (normalmente negro o el color del texto por defecto) */
+  padding: 10px 20px; /* Ajusta el relleno según tus preferencias */
+  cursor: pointer; /* Cambia el cursor al puntero al pasar el ratón */
+  text-decoration: none; /* Elimina subrayado en caso de ser un enlace */
+  transition: background-color 0.3s ease-in-out; /* Animación de transición */
+  font-size: 1rem;
+}
+
+.transparent-button:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Color de fondo al pasar el ratón (puedes ajustar la opacidad) */
+  border-color: rgba(0, 0, 0, 0.2); /* Color del borde al pasar el ratón (puedes ajustar la opacidad) */
+  /* Otras propiedades de estilo al pasar el ratón si es necesario */
+}
+
 
 
 .section-title {
@@ -391,7 +408,7 @@ ul {
     }
 
      
-    
+  
     
 
   .container-cita{

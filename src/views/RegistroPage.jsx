@@ -1,17 +1,35 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from 'sonner';
 
 export default function RegistroPage() {
   const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const watchMysel = watch("mysel")
+
+  useEffect(() => {
+    const filtrarSexo = () => {
+      console.log('mysel value', watchMysel);
+    }
+    filtrarSexo()
+  }, [watchMysel]);
+
   const crearUsuario = async (e) => {
-    // console.log(e);
 
     const obj = JSON.stringify({  
       name: e.name , 
       lastName: e.lastName, 
       lastName2: e.lastName2, 
-      sex: "Male",
+      sex: e.mysel,
       birthDate: e.birthDate, 
       email: e.email, 
       phonenumber: e.phoneNumber,
@@ -36,14 +54,6 @@ export default function RegistroPage() {
     }
 
   };
-
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    watch,
-    formState: { errors },
-  } = useForm();
 
   return (
     <>
@@ -205,21 +215,22 @@ export default function RegistroPage() {
                   )}
                 </div>
               </div>
-          
-              <div className="mb-3 col-12 col-lg-6">
-              <label htmlFor="sexo" className="col-12 col-form-label">
-                Sexo:
-              </label>
-              <div className="col-12">
-                <select className="form-select" id="sexo" name="sexo" {...register("sex", {
-                      required: true,
-                  })}>
-                  <option value="">Selecciona una opción</option>
-                  <option value="Femenino">Femenino</option>
-                  <option value="Masculino">Masculino</option>
-                </select>
-              </div>
-            </div>
+
+                  <div className="mb-3 col-12 col-lg-6">
+                  <label className="col-12 col-form-label">Sexo</label>
+                        <select
+                          className="form-select"
+                          defaultValue="0"
+                          {...register("mysel", { validate: (value) => value !== "0" })}
+                        >
+                          <option value="0">Selecciona una opción</option>
+                          <option value="Masculino">Masculino</option>
+                          <option value="Femenino">Femenino</option>
+                        </select>
+                        {errors?.mysel?.type === "validate" && (
+                          <p className="error-message">Este campo es obligatorio</p>
+                        )}
+                    </div>
             
 
               <div className="mb-3">

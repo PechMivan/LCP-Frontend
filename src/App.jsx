@@ -15,6 +15,7 @@ import ResultsPage from "./views/ResultsPage";
 import UserProfilePage from "./views/UserProfilePage";
 import ErrorPage from "./views/ErrorPage";
 import AdminPage from "./views/AdminPage";
+import TerminosCondiciones from "./components/TerminosCondiciones";
 
 
 const App = () => {
