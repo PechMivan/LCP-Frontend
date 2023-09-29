@@ -1,7 +1,6 @@
 
 
 export default function StudyCard({
-  index,
   appointment
 }) {
   return (

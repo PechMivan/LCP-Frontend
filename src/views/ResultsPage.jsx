@@ -4,11 +4,16 @@ import { useEffect, useState, useRef } from "react";
 export default function ResultsPage() {
     const [appointment, setAppointment] = useState(null);
     const [uuid, setUuid] = useState('');
+    let [flag, setFlag] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(uuid);
-        getAppointmentByUuid(uuid);
+        const response = await getAppointmentByUuid(uuid);
+        if( response !== null){
+            setFlag(true);
+        }
+
     };
 
     const getAppointmentByUuid = async (uuid) => {
@@ -20,7 +25,7 @@ export default function ResultsPage() {
 
 
     return (
-            <form onSubmit={handleSubmit} style={{height:"400px"}}>
+            <form onSubmit={handleSubmit}>
                     <div className='container-results d-flex justify-content-center align-items-center m-4'>
                         <div className='row d-flex justify-content-center align-items-center'>
                             <div className='col-12'>
@@ -41,10 +46,10 @@ export default function ResultsPage() {
                                     Consultar
                                 </button>
                             </div>
+                            
                             {
-                                <StudyCard styles={{}} />
-                                
-
+                                flag ? <StudyCard className="m-2" appointment={appointment} />
+                                       : <h2 className="text-center m-2">Aquí se mostrará la cita solicitada</h2> 
                             }
 
                         </div>
