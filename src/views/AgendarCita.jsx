@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 /* import { Link } from "react-router-dom"; */
 import { useForm } from "react-hook-form";
-import { useLocalStorage } from "@uidotdev/usehooks";
 import { useParams } from "react-router-dom";
 import Multiselect from "multiselect-react-dropdown"
 import { Toaster, toast } from "sonner";
-
-
 
 export default function AgendarCita() {
 
@@ -16,7 +13,6 @@ export default function AgendarCita() {
     const responseArray = await response.json();
     const estudios = responseArray.map(x => x.name);
     setEstudios(estudios);
-    console.log(estudios);
   }
 
  
@@ -31,22 +27,26 @@ export default function AgendarCita() {
   const [tel, setTel] = useState("");
   /* const [selectedStudies, setSelectedStudies] = useState([]); */
 
-  const crearCita = async () => {
-    await fetch(`https://lcp-backend.onrender.com/api/v1/appointments`, {
+  const crearCita = async (e) => {
+    console.log(e.analysis);
+    console.log(e);
+    
+    const response = await fetch(`https://lcp-backend.onrender.com/api/v1/appointments`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ 
-        adatetime: date + "T" + time + "Z", 
-        name: name , 
-        lastname: lastNameP, 
-        lastname2: lastNameM, 
-        sex: sex ,
-        birthdate: birthdate, 
-        email: email, 
-        phonenumber: tel,
-        studies: analysis,
+        datetime: e.date + "T" + e.time + "Z", 
+        name: e.name , 
+        lastname: e.lastNameP, 
+        lastname2: e.lastNameM, 
+        sex: e.sex ,
+        birthdate: e.birthdate, 
+        email: e.email, 
+        phonenumber: e.tel,
+        customer: null,
+        studies: e.analysis,
        })
     });
   
@@ -74,7 +74,7 @@ export default function AgendarCita() {
  
 
   }, [])
-  let { estudio } = useParams();
+  // let { estudio } = useParams();
   const [user] = useLocalStorage("user", null);
   const [isChecked, setIsChecked] = useState(false);
   const [estudios, setEstudios] = useState([]);
@@ -171,7 +171,7 @@ export default function AgendarCita() {
                   onSearch={function noRefCheck() {}}
                   onSelect={function noRefCheck() {}}
                   options={estudios}
-                  selectedValues={[estudio && estudio]}
+                  // selectedValues={[estudio]}
                   showCheckbox
                 />
                 {errors.analysis?.message && ( <small className="text-danger">{errors.analysis.message}</small>)}

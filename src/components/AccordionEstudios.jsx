@@ -42,11 +42,11 @@ export default function AccordionEstudios({
               aria-controls={`#flush-collapseOne${index}`}
             >
               <img
-                src={categoria.icono}
-                alt={`Icono especialidad ${categoria.especialidad}`}
+                src={categoria.urlCategory}
+                alt={`Icono especialidad ${categoria.name}`}
                 style={{ width: "50px", marginRight: "10px" }}
               />
-              {categoria.especialidad}
+              {categoria.name}
             </button>
           </h2>
           <div
@@ -68,10 +68,10 @@ export default function AccordionEstudios({
                   </tr>
                 </thead>
                 <tbody>
-                  {categoria.estudios.map((estudio, key) => (
+                  {categoria.studies.map((estudio, key) => (
                     <tr key={key}>
                       <th>{key + 1}</th>
-                      <td className="px-0">{estudio.nombre}</td>
+                      <td className="px-0">{estudio.name}</td>
                       <td align="center">
 
                         {/* ///// BOTÓN ELIMINAR ///// */}
@@ -79,13 +79,13 @@ export default function AccordionEstudios({
                           className={`btn btn-danger ${
                             usuario === "admin" ? "d-block" : "d-none"
                           }`}
-                          onClick={() => eliminar(estudio.nombre)}
+                          onClick={() => eliminar(estudio.name)}
                         >
                           <i className="bi bi-eye-slash-fill"></i> Deshabilitar
                         </button>
 
                         {/* ///// BOTÓN AGENDAR CITA ///// */}
-                        <Link className={`btn btn-success2 mb-1 ${usuario === "admin" ? "d-none" :"d-block"}`} to={`/agendar-cita/${estudio.nombre}`}>Agendar Cita</Link>
+                        <Link className={`btn btn-success2 mb-1 ${usuario === "admin" ? "d-none" :"d-block"}`} to={`/agendar-cita/${estudio.name}`}>Agendar Cita</Link>
                         
 
                         {/* ///// COMPONENTE INDICACIONES ///// */}
@@ -93,7 +93,8 @@ export default function AccordionEstudios({
                           estudio={estudio.nombre}
                           index={index}
                           usuario={usuario}
-                          descripcion={estudio.precio}
+                          indications={estudio.indications}
+                          tiempoEspera={estudio.WaitTime}
                         />
                       </td>
                     </tr>

@@ -9,7 +9,7 @@ export default function StudiesPage() {
   const [ cat2, setCat2 ] = useState([]);
 
   const getData = async () => {
-    const response = await fetch("https://apilcp.onrender.com/api/estudios");
+    const response = await fetch("https://lcp-backend.onrender.com/api/v1/categories");
     const cat = await response.json();
     setCat1(cat.slice(0,cat.length/2));
     setCat2(cat.slice(cat.length/2));

@@ -1,28 +1,49 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from 'sonner';
-import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function RegistroPage() {
-  const [users, setUsers] = useLocalStorage('users', []);
+  const navigate = useNavigate();
+  const crearUsuario = async (e) => {
+    console.log(e);
+
+    const obj = JSON.stringify({  
+      name: e.name , 
+      lastName: e.lastName, 
+      lastName2: e.lastName2, 
+      sex: "Male",
+      birthDate: e.birthDate, 
+      email: e.email, 
+      phonenumber: e.phoneNumber,
+      password: e.password,
+      roles: { roleId: 2 }
+  });
+
+  console.log(obj)
+    try{
+      await fetch(`https://lcp-backend.onrender.com/api/v1/customers`, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: obj});
+      toast.success('Usuario registrado exitosamente.');
+      setTimeout(() => {
+        navigate("/login")
+      }, 1000); 
+    } catch {
+      toast.error('El usuario ya está registrado.');
+    }
+
+  };
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    watch,
     getValues,
-    reset
+    watch,
+    formState: { errors },
   } = useForm();
-
-  const Registrar = (e) => {
-    if (users.some(user => user.email === e.email)) {
-      toast.error('El usuario ya está registrado.');
-    } else {
-      setUsers([...users, e])
-      toast.success('El usuario se ha registrado.');
-      reset();
-    }
-  };
 
   return (
     <>
@@ -31,7 +52,7 @@ export default function RegistroPage() {
         <div className="row d-flex justify-content-end align-content-center mx-5 ">
           <div className="col-12 col-lg-6 order-lg-2 p-5 bg-blur my-5">
             <h1>Registro</h1>
-            <form onSubmit={handleSubmit((d) => Registrar(d))} className="row">
+            <form onSubmit={handleSubmit((d) => crearUsuario(d))} className="row">
               <div className="mb-3 col-12 col-lg-6">
                 <label htmlFor="name" className="col-12 d-block col-form-label">
                   Nombre(s):
@@ -64,16 +85,16 @@ export default function RegistroPage() {
               </div>
 
               <div className="mb-3 col-12 col-lg-6">
-                <label htmlFor="lastNameP" className="col-12 col-form-label">
+                <label htmlFor="lastName" className="col-12 col-form-label">
                   Apellido Paterno:
                 </label>
                 <div className="col-12 ">
                   <input
                     type="text"
                     className="form-control"
-                    id="lastNameP"
-                    name="lastNameP"
-                    {...register("lastNameP", {
+                    id="lastName"
+                    name="lastName"
+                    {...register("lastName", {
                       required: true,
                       validate: {
                         minLength: (v) => v.length >= 2,
@@ -81,31 +102,31 @@ export default function RegistroPage() {
                       },
                     })}
                   />
-                  {errors.lastNameP?.type === "required" && (
+                  {errors.lastName?.type === "required" && (
                     <small className="text-danger">Apellido Paterno es obligatorio</small>
                   )}
 
-                  {errors.lastNameP?.type === "minLength" && (
+                  {errors.lastName?.type === "minLength" && (
                     <small className="text-danger">Apellido Paterno minimo 2 caracteres</small>
                   )}
 
-                  {errors.lastNameP?.type === "matchPattern" && (
+                  {errors.lastName?.type === "matchPattern" && (
                     <small className="text-danger">Solo puede ingresar letras</small>
                   )}
                 </div>
               </div>
 
               <div className="mb-3 col-12 col-lg-6">
-                <label htmlFor="lastNameM" className="col-12 col-form-label">
+                <label htmlFor="lastName2" className="col-12 col-form-label">
                   Apellido Materno:
                 </label>
                 <div className="col-12 ">
                   <input
                     type="text"
                     className="form-control"
-                    id="lastNameM"
-                    name="lastNameM"
-                    {...register("lastNameM", {
+                    id="lastName2"
+                    name="lastName2"
+                    {...register("lastName2", {
                       required: true,
                       validate: {
                         minLength: (v) => v.length >= 2,
@@ -113,15 +134,15 @@ export default function RegistroPage() {
                       },
                     })}
                   />
-                  {errors.lastNameM?.type === "required" && (
+                  {errors.lastName2?.type === "required" && (
                     <small className="text-danger">Apellido Materno es obligatorio</small>
                   )}
 
-                  {errors.lastNameM?.type === "minLength" && (
+                  {errors.lastName2?.type === "minLength" && (
                     <small className="text-danger">Apellido Materno minimo 2 caracteres</small>
                   )}
 
-                  {errors.lastNameM?.type === "matchPattern" && (
+                  {errors.lastName2?.type === "matchPattern" && (
                     <small className="text-danger">Solo puede ingresar letras</small>
                   )}
                 </div>
@@ -129,7 +150,7 @@ export default function RegistroPage() {
 
               <div className="mb-3 col-12 col-lg-6">
                 <label
-                  htmlFor="birthdate"
+                  htmlFor="birthDate"
                   className="col-12 col-form-label"
                 >
                   Fecha de nacimiento:
@@ -138,14 +159,14 @@ export default function RegistroPage() {
                   <input
                     type="date"
                     className="form-control"
-                    id="birthdate"
-                    name="birthdate"
+                    id="birthDate"
+                    name="birthDate"
                     max={new Date().toJSON().slice(0, 10)}
-                    {...register("birthdate", {
+                    {...register("birthDate", {
                       required: true,
                     })}
                   />
-                  {errors.birthdate?.type === "required" && (
+                  {errors.birthDate?.type === "required" && (
                     <small className="text-danger">Fecha de nacimiento es obligatorio</small>
                   )}
                 </div>
@@ -190,10 +211,12 @@ export default function RegistroPage() {
                 Sexo:
               </label>
               <div className="col-12">
-                <select className="form-select" id="sexo" name="sexo" required>
+                <select className="form-select" id="sexo" name="sexo" {...register("sex", {
+                      required: true,
+                  })}>
                   <option value="">Selecciona una opción</option>
-                  <option value="Hombre">Femenino</option>
-                  <option value="Mujer">Masculino</option>
+                  <option value="Femenino">Femenino</option>
+                  <option value="Masculino">Masculino</option>
                 </select>
               </div>
             </div>

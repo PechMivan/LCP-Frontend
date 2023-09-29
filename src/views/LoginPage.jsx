@@ -93,9 +93,6 @@ export default function LoginPage() {
           <div className="mt-3 text-center">
             <p>¿No tienes una cuenta? <Link to="/registro">¡Registrate aquí!</Link> </p>
           </div>
-          <div className="mt-3 text-center">
-            <p>¿Olvidaste tu contraseña? <Link to="/password-recovery">¡Recupérala aquí!</Link> </p>
-          </div>
         </div>
       </div>
     </div>

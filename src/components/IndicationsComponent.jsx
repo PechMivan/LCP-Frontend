@@ -1,4 +1,4 @@
-export default function IndicationsComponent({ estudio, index, usuario, descripcion }) {
+export default function IndicationsComponent({ estudio, index, usuario, indicatons, tiempoEspera }) {
   return (
     <>
       <button
@@ -44,14 +44,14 @@ export default function IndicationsComponent({ estudio, index, usuario, descripc
                   <div className="col-6">
                     <h3 className="bi bi-clock-history text-center">
                       {" "}
-                      1 - 2 días {descripcion}
+                      {estudio}
                     </h3>
                   </div>
                 </div>
                 <div className="row d-flex justify-content-around m-0 p-4">
                   <ul className="my-3">
                     <li>
-                      {descripcion}
+                      {estudio}
                     </li>
                     
                   </ul>
