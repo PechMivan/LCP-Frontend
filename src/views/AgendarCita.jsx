@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 import { useForm } from "react-hook-form";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import { useParams } from "react-router-dom";
 import Multiselect from "multiselect-react-dropdown"
+import { Toaster, toast } from "sonner";
 
 
 
 export default function AgendarCita() {
+
+
   const getData = async () => {
     const response = await fetch("https://gist.githubusercontent.com/woxie/d5f959c995c007e226807a398f21238e/raw/df688c25f526379e01363430d63f83966fd3fb27/gistfile1.txt");
     const responseArray = await response.json();
@@ -16,6 +19,44 @@ export default function AgendarCita() {
     console.log(estudios);
   }
 
+ 
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [name, setName] = useState("");
+  const [lastNameP, setNameP] = useState("");
+  const [lastNameM, setNameM] = useState("");
+  const [sex, setSex] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [email, setEmail] = useState("");
+  const [tel, setTel] = useState("");
+
+
+  const crearCita = async () => {
+    await fetch(`https://lcp-backend.onrender.com/api/v1/appointments`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ datetime: date + "T" + time + "Z", name: name , lastname: lastNameP, lastname2: lastNameM, sex: sex ,birthdate: birthdate, email: email, phonenumber: tel })
+    });
+
+  
+    setDate("");
+    setName("");
+    setNameP("");
+    setNameM("");
+    setSex("");
+    setBirthdate("");
+    setEmail("");
+    setTel("");
+    setTime("");
+    getData();
+    toast.success('El nuevo estudio se ha creado.');
+    console.log(crearCita);
+  }
+
+
+  
   useEffect(() => {
     // if(estudio === undefined || estudio === null){
     //   estudio = "";
@@ -59,10 +100,10 @@ export default function AgendarCita() {
   //   setValue("analysis", estudio);
   // }, []);
 
-  const crearCita = (d) => {
+/*   const crearCita = (d) => {
     console.log(d);
   };
-
+ */
   const handleOnChange = () => {
     setIsChecked(!isChecked);
   };
@@ -83,6 +124,7 @@ export default function AgendarCita() {
 
   return (
     <>
+    <Toaster richColors position="top-right" />
       <div className="container-cita">
         <div className="row m-0 p-3">
           <div className="col-12 col-lg-6 order-lg-2 py-5 bg-blur my-5">
@@ -126,7 +168,7 @@ export default function AgendarCita() {
                   onSelect={function noRefCheck() {}}
                   options={estudios}
                   showCheckbox
-                  selectedValues={[estudio]}
+                  /* selectedValues={[estudio]} */
                   
 
                   //if(estudio !== undefined || estudio !== null){selectedValues=[estudio]}
@@ -152,7 +194,7 @@ export default function AgendarCita() {
                     className="form-control"
                     id="time"
                     {...register("time", {
-                      required: "La hora es obligatorio",
+                      required: "La hora es obligatoria",
                     })}
                   />
                   {errors.time?.type === "required" && (
@@ -294,11 +336,13 @@ export default function AgendarCita() {
               </div>
 
               <div className="mb-3 col-12 col-lg-6">
-              <label htmlFor="sexo" className="col-12 col-form-label">
+              <label htmlFor="sex" className="col-12 col-form-label">
                 Sexo:
               </label>
               <div className="col-12">
-                <select className="form-select" id="sexo" name="sexo" required>
+                <select className="form-select" id="sex" name="sex"  {...register("sex", {
+                      required: true
+                      validate: {}})}>
                   <option value="">Selecciona una opción</option>
                   <option value="Hombre">Femenino</option>
                   <option value="Mujer">Masculino</option>
