@@ -22,7 +22,7 @@ export default function LoginPage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ 
-        user: e.user,
+        email: e.email,
         password: e.password
       })
     });
