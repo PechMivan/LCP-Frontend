@@ -12,7 +12,7 @@ export default function AgendarCita() {
 
 
   const getData = async () => {
-    const response = await fetch("https://gist.githubusercontent.com/woxie/d5f959c995c007e226807a398f21238e/raw/df688c25f526379e01363430d63f83966fd3fb27/gistfile1.txt");
+    const response = await fetch('https://lcp-backend.onrender.com/api/v1/studies');
     const responseArray = await response.json();
     const estudios = responseArray.map(x => x.name);
     setEstudios(estudios);
@@ -29,7 +29,7 @@ export default function AgendarCita() {
   const [birthdate, setBirthdate] = useState("");
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
-
+  /* const [selectedStudies, setSelectedStudies] = useState([]); */
 
   const crearCita = async () => {
     await fetch(`https://lcp-backend.onrender.com/api/v1/appointments`, {
@@ -37,9 +37,18 @@ export default function AgendarCita() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ datetime: date + "T" + time + "Z", name: name , lastname: lastNameP, lastname2: lastNameM, sex: sex ,birthdate: birthdate, email: email, phonenumber: tel })
+      body: JSON.stringify({ 
+        adatetime: date + "T" + time + "Z", 
+        name: name , 
+        lastname: lastNameP, 
+        lastname2: lastNameM, 
+        sex: sex ,
+        birthdate: birthdate, 
+        email: email, 
+        phonenumber: tel,
+        studies: analysis,
+       })
     });
-
   
     setDate("");
     setName("");
@@ -62,7 +71,7 @@ export default function AgendarCita() {
     //   estudio = "";
     // }
     getData();
-    console.log(estudio)
+ 
 
   }, [])
   let { estudio } = useParams();
@@ -100,10 +109,7 @@ export default function AgendarCita() {
   //   setValue("analysis", estudio);
   // }, []);
 
-/*   const crearCita = (d) => {
-    console.log(d);
-  };
- */
+ 
   const handleOnChange = () => {
     setIsChecked(!isChecked);
   };
@@ -151,38 +157,24 @@ export default function AgendarCita() {
                 >
                   Análisis:
                 </label>
-                {/* <input type="text" className="form-control" id="analysis" 
-                {...register("analysis", {
-                  required: "El analisis es obligatorio",
-                  validate: {
-                    minLength: (v) => v.length >= 2
-                  }
-                })}/>
-              {errors.analysis?.message && ( <small className="text-danger">{errors.analysis.message}</small> )} */}
-
+                
+               
+      
+              {/*   {...register("analysis", {
+                  required: "Selecciona un Estudio" 
+                })} */}
                 <Multiselect
+                  id="analysis" 
                   isObject={false}
                   onKeyPressFn={function noRefCheck() {}}
                   onRemove={function noRefCheck() {}}
                   onSearch={function noRefCheck() {}}
                   onSelect={function noRefCheck() {}}
                   options={estudios}
+                  selectedValues={[estudio && estudio]}
                   showCheckbox
-                  /* selectedValues={[estudio]} */
-                  
-
-                  //if(estudio !== undefined || estudio !== null){selectedValues=[estudio]}
-
-                  //selectValues={estudios ? [[estudio]] : false}
-                  // {estudio ? selectedValues=[estudio] : selectedValues=[]}
-                  
-                  // selectedValues={function ParamsEmpty(){if(estudio === undefined || estudio === null){
-                  //   estudio = "Hola";
-                  // }}[estudio]}
-                  // selectedValues={()=>{!(estudio == undefined) ? [estudio] : false}}
-  
-                  
                 />
+                {errors.analysis?.message && ( <small className="text-danger">{errors.analysis.message}</small>)}
               </div>
               <div className="mb-3 col-12 col-md-6">
                 <label htmlFor="time" className="col-12 col-form-label">
@@ -341,11 +333,11 @@ export default function AgendarCita() {
               </label>
               <div className="col-12">
                 <select className="form-select" id="sex" name="sex"  {...register("sex", {
-                      required: true
-                      validate: {}})}>
+                      required: true,
+                      })}>
                   <option value="">Selecciona una opción</option>
-                  <option value="Hombre">Femenino</option>
-                  <option value="Mujer">Masculino</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Femenino">Femenino</option>
                 </select>
               </div>
               </div>

@@ -7,27 +7,32 @@ export default function LoginPage() {
   const [ users ] = useLocalStorage('users', []);
   const [ user , setUser ] = useLocalStorage('user', null);
   const navigate = useNavigate();
-    const {
-      register,
-      handleSubmit,
-      formState: { errors }
-    } = useForm();
-    const login = (e) => {
-      if ( users.some(user => user.email === e.email)){
-        const user = users.find(user => user.email === e.email)
-        if(user.password === e.password){
-          toast.success('Sesión iniciada');
-          setUser({...user});
-          setTimeout(() => {
-            navigate("/userprofile")
-          }, 1000);
-        } else {
-          toast.error('Usuario y/o contraseña incorrectos');
-        }
-      } else {
-        toast.error('El Usuario no existe');
-      } 
-    }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
+
+  const login = async (e) => {
+    console.log(e);
+    const response = await fetch(`https://lcp-backend.onrender.com/api/v1/customers/login`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ 
+        user: e.user,
+        password: e.password
+      })
+    });
+    const user = await response.json();
+    toast.success('Sesión iniciada');
+    setUser({...user});
+    setTimeout(() => {
+      navigate("/userprofile")
+    }, 1000);
+  }
   return (
     <>
     <Toaster richColors position="top-right"/>
