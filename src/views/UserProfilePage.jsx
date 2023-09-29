@@ -9,7 +9,7 @@ export default function UserProfilePage() {
     const response = await fetch(`https://lcp-backend.onrender.com/api/v1/appointments/customer/${user.customerID}`);
     const appointmentsArray = await response.json();
     setAppointments(appointmentsArray);
-    
+    console.log(appointmentsArray);
   }
   useEffect(() => {
 
@@ -41,9 +41,9 @@ export default function UserProfilePage() {
         </div>
         <div className='m-5'>
         {
-        appointments.map((appointment, index) => (
-            <StudyCard key={index} appointment={appointment} index={index}/>
-        )) && <h1 className='text-center' style={{height:"200px"}}>Sin citas realizadas</h1>
+          appointments.length ? 
+          appointments.map((appointment, index) => (<StudyCard key={index} appointment={appointment} index={index}/>))
+          : <h1 className='text-center' style={{height:"200px"}}>Sin citas realizadas</h1>
         }
         
         </div>

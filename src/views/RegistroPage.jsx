@@ -5,7 +5,7 @@ import { Toaster, toast } from 'sonner';
 export default function RegistroPage() {
   const navigate = useNavigate();
   const crearUsuario = async (e) => {
-    console.log(e);
+    // console.log(e);
 
     const obj = JSON.stringify({  
       name: e.name , 

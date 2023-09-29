@@ -1,17 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 /* import { Link } from "react-router-dom"; */
 import { useForm } from "react-hook-form";
+import { useLocalStorage } from "@uidotdev/usehooks";
 import { useParams } from "react-router-dom";
 import Multiselect from "multiselect-react-dropdown"
 import { Toaster, toast } from "sonner";
 
-export default function AgendarCita() {
 
+
+export default function AgendarCita() {
+  const [user] = useLocalStorage("user", null);
+  const [isChecked, setIsChecked] = useState(false);
+  const [estudios, setEstudios] = useState([]);
+  
+  const multiselectRef = useRef();
+
+  const getSelectedStudies = () => {
+    return multiselectRef.current.getSelectedItems();
+  };
 
   const getData = async () => {
     const response = await fetch('https://lcp-backend.onrender.com/api/v1/studies');
     const responseArray = await response.json();
-    const estudios = responseArray.map(x => x.name);
+    const estudios = responseArray.map(x => { return { studyId: x.studyId, name: x.name } });
     setEstudios(estudios);
   }
 
@@ -19,66 +30,60 @@ export default function AgendarCita() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [name, setName] = useState("");
-  const [lastNameP, setNameP] = useState("");
-  const [lastNameM, setNameM] = useState("");
+  const [lastName, setNameP] = useState("");
+  const [lastName2, setNameM] = useState("");
   const [sex, setSex] = useState("");
-  const [birthdate, setBirthdate] = useState("");
+  const [birthDate, setbirthDate] = useState("");
   const [email, setEmail] = useState("");
-  const [tel, setTel] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
   /* const [selectedStudies, setSelectedStudies] = useState([]); */
 
   const crearCita = async (e) => {
-    console.log(e.analysis);
-    console.log(e);
+  
+    const obj = JSON.stringify({  
+      dateTime: e.date + "T" + e.time + "Z", 
+        name: e.name , 
+        lastName: e.lastName, 
+        lastName2: e.lastName2, 
+        sex: "male" ,
+        birthDate: e.birthDate, 
+        email: e.email, 
+        phonenumber: e.phonenumber,
+        customer: user,
+        studies: getSelectedStudies()
+  });
     
+  console.log(obj);
+    console.log(getSelectedStudies());
     const response = await fetch(`https://lcp-backend.onrender.com/api/v1/appointments`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ 
-        datetime: e.date + "T" + e.time + "Z", 
-        name: e.name , 
-        lastname: e.lastNameP, 
-        lastname2: e.lastNameM, 
-        sex: e.sex ,
-        birthdate: e.birthdate, 
-        email: e.email, 
-        phonenumber: e.tel,
-        customer: null,
-        studies: e.analysis,
-       })
-    });
+      body: obj});
   
     setDate("");
     setName("");
     setNameP("");
     setNameM("");
     setSex("");
-    setBirthdate("");
+    setbirthDate("");
     setEmail("");
-    setTel("");
+    setPhonenumber("");
     setTime("");
     getData();
     toast.success('El nuevo estudio se ha creado.');
-    console.log(crearCita);
   }
 
 
   
   useEffect(() => {
-    // if(estudio === undefined || estudio === null){
-    //   estudio = "";
-    // }
+
     getData();
- 
 
   }, [])
-  // let { estudio } = useParams();
-  const [user] = useLocalStorage("user", null);
-  const [isChecked, setIsChecked] = useState(false);
-  const [estudios, setEstudios] = useState([]);
-  // const [studies, setStudies] = useState(estudios);
+
+
   const {
     register,
     handleSubmit,
@@ -88,45 +93,26 @@ export default function AgendarCita() {
   useEffect(() => {
     if (isChecked) {
       setValue("name", user.name);
-      setValue("lastNameP", user.lastNameP);
-      setValue("lastNameM", user.lastNameM);
+      setValue("lastName", user.lastName);
+      setValue("lastName2", user.lastName2);
       setValue("sex", user.sex);
-      setValue("birthdate", user.birthdate);
-      setValue("phoneNumber", user.phoneNumber);
+      setValue("birthDate", user.birthDate);
+      setValue("phonenumber", user.phonenumber);
       setValue("email", user.email);
     } else {
       setValue("name", "");
-      setValue("lastNameP", "");
-      setValue("lastNameM", "");
+      setValue("lastName", "");
+      setValue("lastName2", "");
       setValue("sex", "");
-      setValue("birthdate", "");
-      setValue("phoneNumber", "");
+      setValue("birthDate", "");
+      setValue("phonenumber", "");
       setValue("email", "");
     }
   }, [isChecked]);
 
-  // useEffect(() => {
-  //   setValue("analysis", estudio);
-  // }, []);
-
- 
   const handleOnChange = () => {
     setIsChecked(!isChecked);
   };
-
-  // const ParamsEmpty= () => {
-  //       if(estudio === undefined || estudio === null){
-  //     estudio = [];
-  //   }
-  //   [estudio]
-  // };
-
-//   ParamsEmpty() {
-//     if(estudio === undefined || estudio === null){
-//   estudio = [];
-// }
-// [estudio]
-// };
 
   return (
     <>
@@ -157,22 +143,19 @@ export default function AgendarCita() {
                 >
                   Análisis:
                 </label>
-                
-               
-      
               {/*   {...register("analysis", {
                   required: "Selecciona un Estudio" 
                 })} */}
                 <Multiselect
                   id="analysis" 
-                  isObject={false}
                   onKeyPressFn={function noRefCheck() {}}
                   onRemove={function noRefCheck() {}}
                   onSearch={function noRefCheck() {}}
                   onSelect={function noRefCheck() {}}
                   options={estudios}
-                  // selectedValues={[estudio]}
+                  displayValue="name"
                   showCheckbox
+                  ref={multiselectRef}
                 />
                 {errors.analysis?.message && ( <small className="text-danger">{errors.analysis.message}</small>)}
               </div>
@@ -251,16 +234,16 @@ export default function AgendarCita() {
           
               </div>
               <div className="mb-3 col-12 col-md-6">
-                <label htmlFor="lastNameP" className="col-12 col-form-label">
+                <label htmlFor="lastName" className="col-12 col-form-label">
                   Apellido Paterno:
                 </label>
                 <div className="col-12 ">
                   <input
                     type="text"
                     className="form-control"
-                    id="lastNameP"
-                    name="lastNameP"
-                    {...register("lastNameP", {
+                    id="lastName"
+                    name="lastName"
+                    {...register("lastName", {
                       required: true,
                       validate: {
                         minLength: (v) => v.length >= 2,
@@ -269,19 +252,19 @@ export default function AgendarCita() {
                       },
                     })}
                   />
-                  {errors.lastNameP?.type === "required" && (
+                  {errors.lastName?.type === "required" && (
                     <small className="text-danger">
                       Apellido Paterno es obligatorio
                     </small>
                   )}
 
-                  {errors.lastNameP?.type === "minLength" && (
+                  {errors.lastName?.type === "minLength" && (
                     <small className="text-danger">
                       Apellido Paterno minimo 2 caracteres
                     </small>
                   )}
 
-                  {errors.lastNameP?.type === "matchPattern" && (
+                  {errors.lastName?.type === "matchPattern" && (
                     <small className="text-danger">
                       Solo puede ingresar letras
                     </small>
@@ -289,16 +272,16 @@ export default function AgendarCita() {
                 </div>
               </div>
               <div className="mb-3 col-12 col-md-6">
-                <label htmlFor="lastNameM" className="col-12 col-form-label">
+                <label htmlFor="lastName2" className="col-12 col-form-label">
                   Apellido Materno:
                 </label>
                 <div className="col-12 ">
                   <input
                     type="text"
                     className="form-control"
-                    id="lastNameM"
-                    name="lastNameM"
-                    {...register("lastNameM", {
+                    id="lastName2"
+                    name="lastName2"
+                    {...register("lastName2", {
                       required: true,
                       validate: {
                         minLength: (v) => v.length >= 2,
@@ -307,19 +290,19 @@ export default function AgendarCita() {
                       },
                     })}
                   />
-                  {errors.lastNameM?.type === "required" && (
+                  {errors.lastName2?.type === "required" && (
                     <small className="text-danger">
                       Apellido Materno es obligatorio
                     </small>
                   )}
 
-                  {errors.lastNameM?.type === "minLength" && (
+                  {errors.lastName2?.type === "minLength" && (
                     <small className="text-danger">
                       Apellido Materno minimo 2 caracteres
                     </small>
                   )}
 
-                  {errors.lastNameM?.type === "matchPattern" && (
+                  {errors.lastName2?.type === "matchPattern" && (
                     <small className="text-danger">
                       Solo puede ingresar letras
                     </small>
@@ -343,21 +326,21 @@ export default function AgendarCita() {
               </div>
 
               <div className="mb-3 col-12 col-md-6">
-                <label htmlFor="birthdate" className="col-12 col-form-label">
+                <label htmlFor="birthDate" className="col-12 col-form-label">
                   Fecha de nacimiento:
                 </label>
                 <div className="col-12">
                   <input
                     type="date"
                     className="form-control"
-                    id="birthdate"
-                    name="birthdate"
+                    id="birthDate"
+                    name="birthDate"
                     max={new Date().toJSON().slice(0, 10)}
-                    {...register("birthdate", {
+                    {...register("birthDate", {
                       required: true,
                     })}
                   />
-                  {errors.birthdate?.type === "required" && (
+                  {errors.birthDate?.type === "required" && (
                     <small className="text-danger">
                       Fecha de nacimiento es obligatorio
                     </small>
@@ -365,17 +348,17 @@ export default function AgendarCita() {
                 </div>
               </div>
               <div className="mb-3 col-12 col-md-6">
-                <label htmlFor="phoneNumber" className="col-12 col-form-label">
+                <label htmlFor="phonenumber" className="col-12 col-form-label">
                   Teléfono Celular:
                 </label>
                 <div className="col-12">
                   <input
                     type="tel"
                     className="form-control"
-                    id="phoneNumber"
-                    name="phoneNumber"
+                    id="phonenumber"
+                    name="phonenumber"
                     maxLength={10}
-                    {...register("phoneNumber", {
+                    {...register("phonenumber", {
                       required: true,
                       validate: {
                         minLength: (v) => v.length == 10,
@@ -383,19 +366,19 @@ export default function AgendarCita() {
                       },
                     })}
                   />
-                  {errors.phoneNumber?.type === "required" && (
+                  {errors.phonenumber?.type === "required" && (
                     <small className="text-danger">
                       El número de teléfono es requerido.
                     </small>
                   )}
 
-                  {errors.phoneNumber?.type === "minLength" && (
+                  {errors.phonenumber?.type === "minLength" && (
                     <small className="text-danger">
                       El mínimo de digitos es 10
                     </small>
                   )}
 
-                  {errors.phoneNumber?.type === "matchPattern" && (
+                  {errors.phonenumber?.type === "matchPattern" && (
                     <small className="text-danger">
                       Solo puede ingresar números
                     </small>

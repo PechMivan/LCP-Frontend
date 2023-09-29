@@ -7,11 +7,11 @@ export default function StudyCard({
   return (
     <>
       <div className="container my-5 px-0 tarjeta2 col-12 col-lg-6 ">
-        <div className="d-flex justify-content-center align-items-center headcard">
-          <h3> {appointment.dateTime} </h3>
+        <div className="d-flex justify-content-center align-items-center headcard p-2">
+          <h4> {"Fecha: " + appointment.dateTime.replace("T", " Hora: ").slice(0,-3)} </h4>
         </div>
         <div className=" px-2 card text-center">
-          <ul>
+          <ul className="p-3">
             {
               appointment.studies.map((study, index) => {
                 return(<li key={index} style={{listStyleType: "none"}}>{study.name}</li>);
