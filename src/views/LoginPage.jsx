@@ -31,7 +31,7 @@ export default function LoginPage() {
     setUser({...user});
     setTimeout(() => {
       navigate("/userprofile")
-    }, 1000);
+    }, 1000); 
   }
   return (
     <>
