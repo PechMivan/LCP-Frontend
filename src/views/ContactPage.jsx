@@ -1,38 +1,52 @@
 import { useState } from "react";
 import { Toaster, toast } from 'sonner';
+
+
 export default function ContactPage() {
   const [nombre, setNombre] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setmail] = useState('');
   const [numero, setnumero] = useState('');
   const [asunto, setAsunto] = useState('');
   const [mensaje, setMensaje] = useState('');
 
   const borrarDatos = () => {
     setNombre('');
-    setEmail('');
+    setmail('');
     setnumero('');
     setAsunto('');
     setMensaje('');
   }
 
+  const handleNumeroChange = (e) => {
+    const input = e.target.value;
+    const numeroTelefono = input.replace(/[^0-9]+/g, ' ');
+    setnumero(numeroTelefono);
+  }
+
+  const handleNombreChange = (e) => {
+    const input = e.target.value;
+    const nombreValido = input.replace(/[^A-Za-zÀ-ž\s]+/ig, "");
+    setNombre(nombreValido);
+  };
+
   const handleButton = async (e) => {
     e.preventDefault();
     try {
-      await fetch( "https://formsubmit.co/ajax/leonrosant92@gmail.com",
-      //await fetch( "https://formsubmit.co/ajax/laboratorioclinicoponiente@gmail.com",
-        {
-          method: "POST",
-          headers: { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(
-            {
-              nombre,email,numero,asunto,mensaje
-            }
-          )
-        }
-      )
+       await fetch( "https://formsubmit.co/ajax/leonrosant92@gmail.com",
+      // //await fetch( "https://formsubmit.co/ajax/laboratorioclinicoponiente@gmail.com",
+         {
+           method: "POST",
+           headers: { 
+             'Content-Type': 'application/json',
+             'Accept': 'application/json'
+           },
+           body: JSON.stringify(
+             {
+               nombre,email,numero,asunto,mensaje
+             }
+           )
+         }
+       )
       borrarDatos();
       toast.success('El mensaje se ha enviado.')
     } catch (error) {
@@ -57,41 +71,41 @@ export default function ContactPage() {
                 <div className="row">
                   <div className="col-md-6">
                     <div className="md-form mb-0">
-                      <label htmlFor="name"></label>
-                      <input type="text" required id="name" name="name" className="form-control" placeholder="Nombre" onChange={event => setNombre(event.target.value)} value={nombre}/>
+                      <label htmlFor="name"> Nombre </label>
+                      <input type="text"  title="Ingrese su nombre" required id="name" name="name" className="form-control" onChange={handleNombreChange} value={nombre}/>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="md-form mb-0">
-                      <label htmlFor="email"></label>
-                      <input type="email" required id="email" name="email" className="form-control" placeholder="E-mail" onChange={event => setEmail(event.target.value)} value={email}/>
+                      <label htmlFor="email"> Email </label>
+                      <input type="email" required id="email" name="email" className="form-control" onChange={event => setmail(event.target.value)} value={email}/>
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="md-form mb-0">
-                      <label htmlFor="numero"></label>
-                      <input type="tel" pattern="[0-9]+" required id="numero" name="numero" className="form-control" placeholder="Número" onChange={event => setnumero(event.target.value)} value={numero}/>
+                      <label htmlFor="numero">Número </label>
+                      <input type="tel"pattern="[0-9]*" maxLength="15" minLength="10" required id="numero" name="numero" className="form-control" onChange={handleNumeroChange} value={numero}/>
                     </div>
                   </div>
                   <div className="col-md-6">
                     <div className="md-form mb-0">
-                      <label htmlFor="subject"></label>
-                      <input type="text" required id="subject" name="subject" className="form-control" placeholder="Asunto" onChange={event => setAsunto(event.target.value)} value={asunto}/>
+                      <label htmlFor="subject"> Asunto </label>
+                      <input type="text" required id="subject" name="subject" className="form-control" onChange={event => setAsunto(event.target.value)} value={asunto}/>
                     </div>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-md-12">
                     <div className="md-form">
-                      <label htmlFor="message"></label>
-                      <textarea type="text" required id="message" name="message" rows="2" className="form-control md-textarea" placeholder="Mensaje" onChange={event => setMensaje(event.target.value)} value={mensaje}></textarea>
+                      <label htmlFor="message"> Mensaje </label>
+                      <textarea type="text" required id="message" name="message" rows="2" className="form-control md-textarea"  onChange={event => setMensaje(event.target.value)} value={mensaje}></textarea>
                     </div>
                   </div>
                 </div>
                 <div className="text-center mt-4 my-lg-4">
-                  <button type="submit" className="px-4 py-3 text-white bg-green border-0 rounded-pill btn-green">Enviar</button>
+                  <button type="submit" className="btn-green">Enviar</button>
                 </div>
               </form>
               <div className="status"></div>
@@ -99,7 +113,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      <div className="container justify-content-center align-items-center my-5 p-3" id="ubicacion">
+      <div className="container justify-content-center align-items-center my-5 p-3 content-info" id="ubicacion">
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-12 col-md-6 justify-content-center align-items-center">
             <h3 className="text-center">Ubicación </h3>

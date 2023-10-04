@@ -28,7 +28,7 @@ export default function AboutPage() {
       id: 3,
       nombre: "Benjamín Ortega Martínez",
       img : Benji,
-      descripcion: "Soy Benjamín Ortega Martínez, un desarrollador Java Full Stack con licenciatura en Diseño, de 27 años de edad, constantemente inmerso en la búsqueda del conocimiento en el área de TI, que aborda problemas con enfoque creativo para dar soluciones a distintas necesidades a través del diseño.",
+      descripcion: "Soy un desarrollador Java Full Stack con licenciatura en Diseño, constantemente inmerso en la búsqueda del conocimiento en el área de TI, que aborda problemas con enfoque creativo para dar soluciones a distintas necesidades a través del diseño.",
       rol : "Development Team"
     },{
       id: 4,
@@ -46,7 +46,7 @@ export default function AboutPage() {
       id: 6,
       nombre: "Luis David Olea Martinez",
       img : Luis,
-      descripcion: "¡Hola! Soy Luis David Olea Martinez, un Desarrollador Java Full Stack Jr de 29 años que encuentra en la tecnología una fuente inagotable de inspiración. Mi entusiasmo por el aprendizaje continuo y la resolución creativa de problemas me impulsa a explorar nuevas formas de crear soluciones efectivas.",
+      descripcion: "Encuentro en la tecnología una fuente inagotable de inspiración. Mi entusiasmo por el aprendizaje continuo y la resolución creativa de problemas me impulsa a explorar nuevas formas de crear soluciones efectivas.",
       rol : "Development Team"
     },{
       id: 7,
@@ -66,14 +66,14 @@ export default function AboutPage() {
     <>
     <h1 className="mt-4 text-center">Acerca de nosotros</h1>
     <div className="container min-vh-100">
-      <div className="row justify-content-center align-items-center my-5 row-info p-4">
+      <div className="row justify-content-center align-items-center my-5 content-info p-4">
         <h3 className="text-align-left">Misión</h3>
         <hr/>
         <div className="col-lg-6 p-2 order-2 order-lg-1">
-          <img className="img-fluid" src={mision} alt="Imagen vision"/>
+          <img className="img-info img-fluid" src={mision} alt="Imagen vision"/>
         </div>
         <div id="mision" className="col-lg-6 order-1 order-lg-2">
-          <p>En Laboratorio Clínico Poniente, nuestra misión es proporcionar servicios de diagnóstico médico de alta
+          <p className='info'>En Laboratorio Clínico Poniente, nuestra misión es proporcionar servicios de diagnóstico médico de alta
             calidad, precisos y confiables para contribuir al bienestar y la salud de nuestros pacientes. A través de
             tecnología de vanguardia y un equipo altamente capacitado, estamos comprometidos a ofrecer resultados clínicos
             precisos y oportunos que apoyen a los profesionales de la salud en la toma de decisiones médicas informadas y
@@ -81,11 +81,11 @@ export default function AboutPage() {
           </p>
         </div>
       </div>
-      <div className="row justify-content-center align-items-center my-5 row-info p-4">
-        <h3 className="text-center">Visión</h3>
+      <div className="row justify-content-center align-items-center my-5 content-info p-4">
+        <h3 className="h3-izquerda">Visión</h3>
         <hr/>
         <div className="col-lg-6">
-          <p>Nuestra visión es ser reconocidos como el laboratorio clínico líder y de referencia en nuestra
+          <p className='info'>Nuestra visión es ser reconocidos como el laboratorio clínico líder y de referencia en nuestra
             región.Buscamos alcanzar la excelencia en el ámbito del diagnóstico médico a través de la innovación
             constante, la investigación y la adopción de las mejores prácticas en el campo de la medicina de laboratorio.
             Aspiramos a establecer relaciones de confianza y colaboración con los profesionales de la salud y las
@@ -93,13 +93,13 @@ export default function AboutPage() {
             bienestar de la comunidad que servimos.</p>
         </div>
         <div className="col-lg-6 p-2">
-          <img className="img-fluid" src={vision} alt="Imagen vision"/>
+          <img className="img-info img-fluid" src={vision} alt="Imagen vision"/>
         </div>
       </div>
       <div className="row justify-content-center align-items-center">
         <div className="col-lg-10 justify-content-center">
           <h3>Nuestro Equipo</h3>
-          <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
+          <div id="carouselExampleInterval" className="carousel slide content-info" data-bs-ride="carousel">
             <div className="carousel-inner">
               {
                 equipo.map( (p) => (

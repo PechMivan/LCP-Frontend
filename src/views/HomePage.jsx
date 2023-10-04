@@ -27,25 +27,27 @@ function HomePage() {
   ]
   return (
     <div className="d-flex flex-column">
-      <div id="carouselExampleIndicators" className="carousel slide">
+      <div id="carouselExampleIndicators" className="carousel slide ">
         <div className="carousel-inner">
           <div className="carousel-item active position-relative">
-            <img src={analisisClinico} className="w-100 h-75 img-bg-promotion"
+            <div className='h-max-carousel'>
+              <img src={analisisClinico} className="w-100 img-bg-promotion"
               alt="Imagen de estudio PCR"/>
-            <div className="h-100 card-promo d-flex flex-column justify-content-around align-items-center">
-              <img src={descuento} alt="Imagen de analisis" className="img-promotion"/>
-              <h4 className="title-promotion text-center md-h1">15% de descuento</h4>
-              <ul>
-                <li>Check up básico</li>
-                <li>Perfil ginecológico</li>
-                <li>Perfil preoperatorio</li>
-                <li>Perfil diabético</li>
-                <li>Perfil prematrimoniales</li>
-              </ul>
+              <div className="h-100 card-promo d-flex flex-column justify-content-around align-items-center">
+                <img src={descuento} alt="Imagen de analisis" className="img-promotion"/>
+                <h4 className="title-promotion text-center md-h1">15% de descuento</h4>
+                <ul>
+                  <li>Check up básico</li>
+                  <li>Perfil ginecológico</li>
+                  <li>Perfil preoperatorio</li>
+                  <li>Perfil diabético</li>
+                  <li>Perfil prematrimoniales</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div className="carousel-item position-relative">
-            <img src={pcr} className="w-100 h-75 img-bg-promotion"
+            <img src={pcr} className="w-100 img-bg-promotion object-fit-cover h-max-carousel"
               alt="Imagen de estudio PCR"/>
             <div className="h-100 card-promo d-flex flex-column justify-content-around align-items-center">
               <img src={analisis} alt="Imagen de analisis" className="img-promotion"/>
@@ -80,13 +82,13 @@ function HomePage() {
         </div>
         {
           destacados.map( (destacado, i) => (
-            <div key={i} className="bg-blue-ligth p-3 rounded-1 max-width-320 d-flex flex-column justify-content-between align-items-center">
+            <div key={i} className="bg-blue-ligth p-3 rounded-1 max-width-320 d-flex flex-column justify-content-between align-items-center content-info">
               <img src={destacado.img} alt="Imagen de analisis" className="w-100 rounded-1"/>
               <div className="flex-grow-1 d-flex flex-column justify-content-between">
                 <p className="text-center text-color-principal text-title-destacado">{destacado.title}</p>
                 <p className="text-color-principal text-subtitle-destacado">{destacado.subtitle}</p>
                 <div className="w-100 d-flex justify-content-center">
-                  <ButtonCita/>
+                  <ButtonCita icon/>
                 </div>
               </div>
             </div>

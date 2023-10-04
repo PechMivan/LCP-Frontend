@@ -31,7 +31,9 @@
 .max-width-320 {
   max-width: 375px;
 }
-
+.h-max-carousel{
+  max-height: calc(100vh - 70px) !important;
+}
 .text-color-principal {
   color: #133752;
 }
@@ -98,15 +100,6 @@
     width: 150px;
   }
 
-  @include desktop {
-    display: block;
-    width: 200px;
-  }
-
-  @include large {
-    display: block;
-    width: 250px;
-  }
 }
 
 .title-promotion {
@@ -124,9 +117,6 @@
     font-size: 3.5rem;
   }
 
-  @include large {
-    font-size: 5rem;
-  }
 }
 
 .subtitle-promotion {
@@ -144,9 +134,6 @@
     font-size: 2.5rem;
   }
 
-  @include large {
-    font-size: 3rem;
-  }
 }
 
 .title-promotion-important {
@@ -169,17 +156,19 @@
     border-bottom: 5px solid red;
     border-top: 5px solid red;
   }
-
-  @include large {
-    font-size: 7rem;
-    border-bottom: 6px solid red;
-    border-top: 6px solid red;
-  }
 }
 
 .btn-green {
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   transition: all;
+  border: 0;
+  color: white;
+  background-color:#2ec273;
+  height: 3rem;
+  width: auto;
+  border-radius: 15px;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
 
   @include tablet {
     font-size: 1.2rem;
@@ -189,6 +178,54 @@
     font-size: 1.3rem;
   }
 }
+
+.btn-green:hover {
+  background-color: #238b5d; 
+}
+
+
+.btn-success2 {
+  color: #fff;
+  background-color: #2ec273;
+  border-color: #2ec273;
+  width:8rem;
+}
+
+.btn-success2:hover {
+  background-color: #238b5d;
+  color: #fff;
+}
+
+.btn-info2 {
+  color: #fff;
+  background-color: #3ac6e9;
+  border-color: #3ac6e9;
+  width:8rem;
+}
+
+.btn-info2:hover {
+  background-color: #329fbb;
+  color: #fff; 
+}
+
+.transparent-button {
+  background-color: transparent; /* Fondo transparente */
+  border: 2px solid transparent; /* Borde transparente */
+  color: white; /* Color de texto heredado (normalmente negro o el color del texto por defecto) */
+  padding: 10px 20px; /* Ajusta el relleno según tus preferencias */
+  cursor: pointer; /* Cambia el cursor al puntero al pasar el ratón */
+  text-decoration: none; /* Elimina subrayado en caso de ser un enlace */
+  transition: background-color 0.3s ease-in-out; /* Animación de transición */
+  font-size: 1rem;
+}
+
+.transparent-button:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Color de fondo al pasar el ratón (puedes ajustar la opacidad) */
+  border-color: rgba(0, 0, 0, 0.2); /* Color del borde al pasar el ratón (puedes ajustar la opacidad) */
+  /* Otras propiedades de estilo al pasar el ratón si es necesario */
+}
+
+
 
 .section-title {
   font-size: 1.3rem;
@@ -275,4 +312,265 @@ ul {
 .icon {
   font-size: 1rem !important;
   margin-right: 10px;
+}
+
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  filter: invert(108%);
+}
+
+.info{
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.img-info{
+  border-radius: 20px;
+}
+
+.content-info {
+  background-color: #F4FAFF;
+  box-shadow:
+  inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+#cabeza {
+      background: linear-gradient(to right, #1f7dfe, #006dd2, #005ba6, #00497a, #123651);
+    }
+
+.h3-izquerda{
+    text-align: right;
+  }
+
+  #envianosMensaje {
+    background: #AAC7FF;
+    //border-radius: 20px 20px 0 0;
+    box-shadow:
+    inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  }
+  
+  #form {
+    background: #f1dfab;
+  }
+  
+  #ubicacion {
+    background: #EFF8FF;
+    margin-top: 20px;
+  }
+
+  #tituloubi{
+    background: linear-gradient(to right, #1f7dfe, #006dd2, #005ba6, #00497a, #123651);
+    //border-radius: 20px 20px 0 0;
+    color: white;
+  }
+
+  li{
+    font-size: 5px;
+  }
+
+  .container-signup{
+    background: url("/assets/img/registro/bgimgsm.jpg");
+    background-size: 100%;
+    background-size: cover;
+    
+    @include mobile-large {
+      background: url("/assets/img/registro/bgimgsm.jpg");
+      background-size: 100%;
+      background-size: cover;
+
+    }
+
+    @include tablet {
+      background: url("/assets/img/registro/bgimgsm.jpg");
+      background-size: 100%;
+      background-size: cover;
+    }
+
+    @include desktop {
+      background: url("/assets/img/registro/bgimg.jpg");
+      background-size: 100%;
+      background-size: cover;
+    }
+    }
+
+    .container-login{
+      background: url("/assets/img/login/lab.jpg");
+      background-size: 100%;
+      background-size: cover;
+      backdrop-filter: blur (100px);
+      }
+
+    .bg-login {
+      background-image: url("/assets/img/login/login-bgsm.jpg");
+      background-position: center center;
+    }
+
+     
+  
+    
+
+  .container-cita{
+
+    @include mobile-large {
+      background: url("/assets/img/citas/citasbgsm.jpg");
+      background-size: 100%;
+      background-size: cover;
+    }
+
+    @include tablet {
+      background: url("/assets/img/citas/citasbgsm.jpg");
+      background-size: 100%;
+      background-size: cover;
+    }
+
+    @include desktop {
+      background: url("/assets/img/citas/citasbg.jpg");
+      background-size: 100%;
+      background-size: cover;
+    
+      
+    }
+    
+     
+    
+    }
+
+  .bg-blur{
+      
+      
+        box-shadow: 0 4px 30px rgba(255, 255, 255, 0.712);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+      
+  }
+  .bg-blur-login{
+      
+        box-shadow: 0 4px 30px rgba(255, 255, 255, 0.753);
+        backdrop-filter: saturate(1%) ;
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+      
+  }
+
+  #tituloresultados{
+    background: linear-gradient(#1f7dfe, #006dd2, #005ba6, #00497a, #123651);
+    padding: 40px;
+    width: 90%;
+    color: white;
+  }
+  
+  .container-results {
+    background-color: #D2EBFF;
+    padding: 60px;
+    width: 90%;
+    border-radius: 10px;
+  }
+
+  .container-download {
+    background-color: #60B2FE;
+    padding: 60px;
+    width: 90%;
+    border-radius: 10px;
+  }
+
+  .inputID {
+    border-radius: 5px;
+  }
+
+  .results-form-control {
+    width: 50%;
+  }
+.bg-blur{
+  background: rgba( 255, 255, 255, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.bg-blur-login{
+  background: rgba( 255, 255, 255, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.tarjeta{
+  background: linear-gradient(to right, #1f7dfe, #006dd2, #005ba6, #00497a, #123651);
+  border-radius: 20px 20px 0 0;
+  color: white;
+}
+
+.tarjeta2 {
+  background: #EFF8FF;
+  border-radius: 20px 20px 20px 20px;
+  box-shadow:
+  inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.headcard{
+  background: linear-gradient(to right, #1f7dfe, #006dd2, #005ba6, #00497a, #123651);
+  border-radius: 20px 20px 0 0;
+  color: white;
+}
+
+.footcard{
+  background: #2ec273;
+  border-radius: 0px 0px 20px 20px;
+  color: white;
+}
+
+.card {
+  background: white;
+  border-radius: 0px;
+  box-shadow:
+  inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+  0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.profilepic{
+  border-radius: 100px;
+  width:200px;
+  height:200px;
+}
+
+.container-error404 {
+  background-color: #E4F3FF;
+  padding: 80px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.error404 {
+  color: #57AEFF;
+  font-size: 8em;
+  margin-top: 25px;
+  margin-bottom: 0px;
+}
+
+.error-Text {
+  font-size: 1.3em;
+  margin-top: -25px;
+  
+}
+
+#ButtonCitaEstudio {
+  font-size: 1em;
+  color: white;
+  background-color:#2ec273;
+  width: auto;
+  border-radius: 7px;
+  
+}
+
+#Ver {
+  color: white;
 }
